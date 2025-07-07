@@ -1,0 +1,35 @@
+{
+	"name": "Rules",
+	"license-name": "GPL-2.0-or-later",
+	"version": "0.0.0",
+	"author": [
+		"[https://Professional.Wiki/ Professional.Wiki]"
+	],
+	"url": "https://professional.wiki/en/extension/rules",
+	"namemsg": "rules",
+	"descriptionmsg": "rules-description",
+	"manifest_version": 2,
+	"requires": {
+		"MediaWiki": ">= 1.43.0"
+	},
+	"MessagesDirs": {
+		"Rules": [
+			"i18n"
+		]
+	},
+	"ResourceFileModulePaths": {
+		"localBasePath": "modules",
+		"remoteExtPath": "Rules/modules"
+	},
+	"ResourceModules": {
+	},
+	"AutoloadNamespaces": {
+		"ProfessionalWiki\\Rules\\": "src/"
+	},
+	"TestAutoloadNamespaces": {
+		"ProfessionalWiki\\Rules\\Tests\\": "tests/phpunit/"
+	},
+	"Hooks": {
+	},
+	"type": "other"
+}

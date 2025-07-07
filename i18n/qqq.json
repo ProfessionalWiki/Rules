@@ -1,0 +1,11 @@
+{
+	"@metadata": {
+		"authors": [
+			"Jeroen De Dauw",
+			"Karsten Hoffmeyer",
+			"Morne Alberts"
+		]
+	},
+	"rules": "{{name}}\nThe name of the extension",
+	"rules-description": "{{Desc|name=Rules|url=https://github.com/ProfessionalWiki/Rules}}"
+}
