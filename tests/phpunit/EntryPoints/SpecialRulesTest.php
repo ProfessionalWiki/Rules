@@ -13,9 +13,6 @@ use SpecialPageTestBase;
  */
 class SpecialRulesTest extends SpecialPageTestBase {
 
-	/**
-	 * @inheritDoc
-	 */
 	protected function newSpecialPage(): SpecialRules {
 		return $this->getServiceContainer()->getSpecialPageFactory()->getPage( 'Rules' );
 	}
