@@ -24,6 +24,8 @@ class RulesHooks implements BeforePageDisplayHook {
 
 		// Add entry point for the Vue app
 		$out->addHTML( '<div id="ext-rules-app"></div>' );
+
+		$out->addModules( 'ext.rules' );
 	}
 
 	private function isRulesPage( Title $title ): bool {

@@ -25,6 +25,11 @@
 		"remoteExtPath": "Rules/modules"
 	},
 	"ResourceModules": {
+		"ext.rules": {
+			"packageFiles": [
+				"ext.rules/init.js"
+			]
+		}
 	},
 	"AutoloadNamespaces": {
 		"ProfessionalWiki\\Rules\\": "src/"
