@@ -6,7 +6,7 @@
 		"[https://Professional.Wiki/ Professional.Wiki]"
 	],
 	"url": "https://professional.wiki/en/extension/rules",
-	"namemsg": "rules",
+	"namemsg": "rules-message",
 	"descriptionmsg": "rules-description",
 	"manifest_version": 2,
 	"requires": {
@@ -16,6 +16,9 @@
 		"Rules": [
 			"i18n"
 		]
+	},
+	"ExtensionMessagesFiles": {
+		"RulesAlias": "Rules.alias.php"
 	},
 	"ResourceFileModulePaths": {
 		"localBasePath": "modules",
@@ -28,6 +31,14 @@
 	},
 	"TestAutoloadNamespaces": {
 		"ProfessionalWiki\\Rules\\Tests\\": "tests/phpunit/"
+	},
+	"SpecialPages": {
+		"Rules": {
+			"class": "ProfessionalWiki\\Rules\\EntryPoints\\SpecialRules",
+			"services": [
+				"TitleFactory"
+			]
+		}
 	},
 	"Hooks": {
 	},
