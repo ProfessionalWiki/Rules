@@ -41,6 +41,15 @@
 		}
 	},
 	"Hooks": {
+		"BeforePageDisplay": "rules"
+	},
+	"HookHandlers": {
+		"rules": {
+			"class": "ProfessionalWiki\\Rules\\EntryPoints\\RulesHooks",
+			"services": [
+				"TitleFactory"
+			]
+		}
 	},
 	"type": "other"
 }

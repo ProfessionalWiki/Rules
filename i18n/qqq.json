@@ -3,9 +3,11 @@
 		"authors": [
 			"Jeroen De Dauw",
 			"Karsten Hoffmeyer",
-			"Morne Alberts"
+			"Morne Alberts",
+			"Alistair3149"
 		]
 	},
+	"rules": "Helper message on the MediaWiki:Rules page",
 	"rules-message": "{{name}}\nThe name of the extension",
 	"rules-description": "{{Desc|name=Rules|url=https://github.com/ProfessionalWiki/Rules}}"
 }
