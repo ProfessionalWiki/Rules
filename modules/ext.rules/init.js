@@ -1,11 +1,21 @@
-function init() {
+const
+	Vue = require( 'vue' ),
+	App = require( './components/App.vue' );
+
+/**
+ * @return {void}
+ */
+function initApp() {
 	const targetElement = document.getElementById( 'ext-rules-app' );
 	if ( targetElement === null ) {
-		mw.log.error( '[ext.rules] No target element found' );
+		mw.log.error( '[ext.rules] Unable to mount Vue app: #ext-rules-app element not found' );
 		return;
 	}
 
-	mw.log.warn( '[ext.rules] Target element found for Vue app' );
+	const app = Vue.createMwApp( App, {} );
+	app.mount( targetElement );
 }
 
-init();
+initApp();
+
+module.exports = { initApp };
