@@ -18,7 +18,12 @@ class RulesHooks implements BeforePageDisplayHook {
 
 	public function onBeforePageDisplay( $out, $skin ): void {
 		$title = $out->getTitle();
-		if ( $title === null || !$this->isRulesPage( $title ) ) {
+
+		if (
+			$title === null ||
+			$out->getActionName() !== 'view' ||
+			!$this->isRulesPage( $title )
+		) {
 			return;
 		}
 
