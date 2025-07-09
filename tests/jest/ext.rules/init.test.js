@@ -1,4 +1,5 @@
-// We mock the vue module to add the createMwApp method.
+// Mock the vue module to add the createMwApp method
+// because it does not exist in the test environment
 jest.mock( 'vue', () => {
 	const originalVue = jest.requireActual( 'vue' );
 	return {
