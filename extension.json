@@ -25,6 +25,19 @@
 		"remoteExtPath": "Rules/modules"
 	},
 	"ResourceModules": {
+		"ext.rules": {
+			"class": "MediaWiki\\ResourceLoader\\CodexModule",
+			"dependencies": [
+				"vue"
+			],
+			"packageFiles": [
+				"ext.rules/init.js",
+				"ext.rules/components/App.vue"
+			],
+			"codexComponents": [
+				"CdxCard"
+			]
+		}
 	},
 	"AutoloadNamespaces": {
 		"ProfessionalWiki\\Rules\\": "src/"
