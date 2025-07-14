@@ -34,11 +34,11 @@ class RulesHooks implements BeforePageDisplayHook {
 	}
 
 	private function isRulesPage( Title $title ): bool {
-		$title = $this->titleFactory->newFromText( RulesExtension::RULES_PAGE_TITLE, NS_MEDIAWIKI );
-		if ( $title === null ) {
+		$rulesTitle = $this->titleFactory->newFromText( RulesExtension::RULES_PAGE_TITLE, NS_MEDIAWIKI );
+		if ( $rulesTitle === null ) {
 			return false;
 		}
-		return $title->equals( $title );
+		return $rulesTitle->equals( $title );
 	}
 
 }
