@@ -9,5 +9,14 @@
 	},
 	"rules": "Helper message on the MediaWiki:Rules page",
 	"rules-message": "{{name}}\nThe name of the extension",
-	"rules-description": "{{Desc|name=Rules|url=https://github.com/ProfessionalWiki/Rules}}"
+	"rules-description": "{{Desc|name=Rules|url=https://github.com/ProfessionalWiki/Rules}}",
+	"rules-table-caption": "The caption of the rules table",
+	"rules-table-column-name": "The name of the column in the rules table",
+	"rules-table-column-conditions": "The conditions of the column in the rules table",
+	"rules-table-column-actions": "The actions of the column in the rules table",
+	"rules-table-empty-state": "The empty state of the rules table",
+	"rules-table-add-rule": "The label of the button to add a rule",
+	"rules-table-delete-rule": "The label of the button to delete a rule",
+	"rules-table-edit-rule": "The label of the button to edit a rule",
+	"rules-table-more-actions": "The label of the button to show more actions"
 }

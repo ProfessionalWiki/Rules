@@ -9,5 +9,14 @@
 	},
 	"rules": "This page is used by Extension:Rules.",
 	"rules-message": "Rules",
-	"rules-description": "TODO"
+	"rules-description": "TODO",
+	"rules-table-caption": "Rules",
+	"rules-table-column-name": "Name",
+	"rules-table-column-conditions": "Conditions",
+	"rules-table-column-actions": "Actions",
+	"rules-table-empty-state": "There are no rules yet.",
+	"rules-table-add-rule": "Add rule",
+	"rules-table-delete-rule": "Delete rule",
+	"rules-table-edit-rule": "Edit rule",
+	"rules-table-more-actions": "More actions"
 }

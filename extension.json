@@ -32,10 +32,33 @@
 			],
 			"packageFiles": [
 				"ext.rules/init.js",
-				"ext.rules/components/App.vue"
+				"ext.rules/components/App.vue",
+				{
+					"name": "ext.rules/icons.json",
+					"callback": "MediaWiki\\ResourceLoader\\CodexModule::getIcons",
+					"callbackParam": [
+						"cdxIconAdd",
+						"cdxIconEdit",
+						"cdxIconEllipsis",
+						"cdxIconTrash"
+					]
+				}
 			],
 			"codexComponents": [
-				"CdxCard"
+				"CdxButton",
+				"CdxIcon",
+				"CdxMenuButton",
+				"CdxTable"
+			],
+			"messages": [
+				"rules-table-caption",
+				"rules-table-column-name",
+				"rules-table-column-conditions",
+				"rules-table-column-actions",
+				"rules-table-empty-state",
+				"rules-table-add-rule",
+				"rules-table-edit-rule",
+				"rules-table-delete-rule"
 			]
 		}
 	},
