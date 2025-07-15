@@ -19,6 +19,11 @@ describe( 'ext.rules/init.js', () => {
 
 	beforeEach( () => {
 		jest.resetModules();
+		global.mw = {
+			log: {
+				warn: jest.fn()
+			}
+		};
 		Vue.createMwApp.mockClear();
 		mockMount.mockClear();
 		global.mw.log.warn.mockClear();
