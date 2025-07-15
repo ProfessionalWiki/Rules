@@ -21,7 +21,7 @@ describe( 'ext.rules/init.js', () => {
 		jest.resetModules();
 		Vue.createMwApp.mockClear();
 		mockMount.mockClear();
-		global.mw.log.error.mockClear();
+		global.mw.log.warn.mockClear();
 	} );
 
 	it( 'should mount the Vue app when the target element exists', () => {
@@ -29,7 +29,7 @@ describe( 'ext.rules/init.js', () => {
 
 		init.initApp();
 
-		expect( global.mw.log.error ).not.toHaveBeenCalled();
+		expect( global.mw.log.warn ).not.toHaveBeenCalled();
 		expect( Vue.createMwApp ).toHaveBeenCalledTimes( 1 );
 		expect( mockMount ).toHaveBeenCalledWith( document.getElementById( 'ext-rules-app' ) );
 	} );
@@ -39,7 +39,7 @@ describe( 'ext.rules/init.js', () => {
 
 		init.initApp();
 
-		expect( global.mw.log.error ).toHaveBeenCalledWith(
+		expect( global.mw.log.warn ).toHaveBeenCalledWith(
 			'[ext.rules] Unable to mount Vue app: #ext-rules-app element not found'
 		);
 		expect( Vue.createMwApp ).not.toHaveBeenCalled();
