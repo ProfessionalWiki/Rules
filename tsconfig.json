@@ -1,0 +1,28 @@
+{
+	"include": [
+		"modules/**/*"
+	],
+	"exclude": [
+		"node_modules",
+		"vendor",
+		"coverage",
+		"tests"
+	],
+	"compilerOptions": {
+		"resolveJsonModule": true,
+		"esModuleInterop": true,
+		"strict": true,
+		"noUnusedLocals": true,
+		"noUnusedParameters": true,
+		"noImplicitReturns": true,
+		"newLine": "lf",
+		"forceConsistentCasingInFileNames": true,
+		"skipLibCheck": true,
+		"pretty": true,
+		"target": "es5",
+		"lib": [ "dom" ],
+		"allowJs": true,
+		"checkJs": true,
+		"noEmit": true
+	}
+}
