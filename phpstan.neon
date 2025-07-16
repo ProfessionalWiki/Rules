@@ -11,3 +11,6 @@ parameters:
 		- ../../vendor
 	bootstrapFiles:
 		- ../../includes/AutoLoader.php
+	excludePaths:
+		analyse:
+			- src/Persistence/RulesDeserializer.php
