@@ -4,7 +4,7 @@ declare( strict_types = 1 );
 
 namespace ProfessionalWiki\Rules\Tests\EntryPoints;
 
-use ProfessionalWiki\Rules\EntryPoints\SpecialRules;
+use MediaWiki\SpecialPage\SpecialPage;
 use ProfessionalWiki\Rules\RulesExtension;
 use SpecialPageTestBase;
 
@@ -13,7 +13,7 @@ use SpecialPageTestBase;
  */
 class SpecialRulesTest extends SpecialPageTestBase {
 
-	protected function newSpecialPage(): SpecialRules {
+	protected function newSpecialPage(): SpecialPage {
 		return $this->getServiceContainer()->getSpecialPageFactory()->getPage( 'Rules' );
 	}
 
