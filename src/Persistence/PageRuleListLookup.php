@@ -5,8 +5,8 @@ declare( strict_types = 1 );
 namespace ProfessionalWiki\Rules\Persistence;
 
 use InvalidArgumentException;
-use JsonContent;
 use JsonException;
+use MediaWiki\Content\JsonContent;
 use MediaWiki\Page\WikiPageFactory;
 use MediaWiki\Title\TitleFactory;
 use ProfessionalWiki\Rules\Application\RuleList;
