@@ -11,10 +11,9 @@ use MediaWiki\Page\WikiPageFactory;
 use MediaWiki\Title\TitleFactory;
 use ProfessionalWiki\Rules\Application\RuleList;
 use ProfessionalWiki\Rules\Application\RuleListLookup;
+use ProfessionalWiki\Rules\RulesExtension;
 
 class PageRuleListLookup implements RuleListLookup {
-
-	private const PAGE_NAME = 'MediaWiki:Rules';
 
 	public function __construct(
 		private readonly TitleFactory $titleFactory,
@@ -33,7 +32,7 @@ class PageRuleListLookup implements RuleListLookup {
 	}
 
 	private function getPageContent(): string { // TODO: test (currently not even manually tested)
-		$title = $this->titleFactory->newFromText( self::PAGE_NAME );
+		$title = $this->titleFactory->newFromText( RulesExtension::RULES_PAGE_TITLE, NS_MEDIAWIKI );
 
 		if ( $title === null ) {
 			return '';
