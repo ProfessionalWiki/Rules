@@ -15,7 +15,11 @@
 		"exports": true
 	},
 	"parserOptions": {
+		"ecmaVersion": 2020,
 		"sourceType": "module"
+	},
+	"rules": {
+		"es-x/no-rest-spread-properties": "off"
 	},
 	"settings": {}
 }

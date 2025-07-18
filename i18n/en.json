@@ -18,5 +18,19 @@
 	"rules-table-add-rule": "Add rule",
 	"rules-table-delete-rule": "Delete rule",
 	"rules-table-edit-rule": "Edit rule",
-	"rules-table-more-actions": "More actions"
+	"rules-table-more-actions": "More actions",
+	"rules-edit-rule-title": "Edit rule",
+	"rules-edit-rule-back": "Back",
+	"rules-edit-rule-save": "Save",
+	"rules-edit-rule-cancel": "Cancel",
+	"rules-edit-rule-name-label": "Rule name",
+	"rules-edit-rule-condition-label": "If a page...",
+	"rules-edit-rule-condition-in-category": "is in at least one of these categories",
+	"rules-edit-rule-condition-add": "Add condition",
+	"rules-edit-rule-action-label": "Then...",
+	"rules-edit-rule-action-add-category": "add to category",
+	"rules-multi-text-input-remove-item": "Remove item",
+	"rules-operator-and": "AND",
+	"rules-table-condition-in-category": "In category: $1",
+	"rules-table-action-add-category": "Add to category: $1"
 }

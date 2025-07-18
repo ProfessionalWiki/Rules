@@ -18,5 +18,19 @@
 	"rules-table-add-rule": "The label of the button to add a rule",
 	"rules-table-delete-rule": "The label of the button to delete a rule",
 	"rules-table-edit-rule": "The label of the button to edit a rule",
-	"rules-table-more-actions": "The label of the button to show more actions"
+	"rules-table-more-actions": "The label of the button to show more actions",
+	"rules-edit-rule-title": "The title of the edit rule page",
+	"rules-edit-rule-back": "The label of the button to go back to the rules list",
+	"rules-edit-rule-save": "The label of the button to save the rule",
+	"rules-edit-rule-cancel": "The label of the button to cancel the edit",
+	"rules-edit-rule-name-label": "The label of the input field for the rule name",
+	"rules-edit-rule-condition-label": "The label of the section for the if condition",
+	"rules-edit-rule-condition-in-category": "The label of the input field for the category",
+	"rules-edit-rule-condition-add": "The label of the button to add a condition",
+	"rules-edit-rule-action-label": "The label of the section for the then condition",
+	"rules-edit-rule-action-add-category": "The label of the input field for the category",
+	"rules-multi-text-input-remove-item": "The label of the button to remove an item",
+	"rules-operator-and": "The label of the operator for the AND conjunction",
+	"rules-table-condition-in-category": "The label of the condition for the in category",
+	"rules-table-action-add-category": "The label of the action for the add category"
 }

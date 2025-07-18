@@ -32,7 +32,18 @@
 			],
 			"packageFiles": [
 				"ext.rules/init.js",
+				"ext.rules/types.js",
 				"ext.rules/components/App.vue",
+				"ext.rules/components/EditRule.vue",
+				"ext.rules/components/FormOption.vue",
+				"ext.rules/components/FormOptions.vue",
+				"ext.rules/components/FormSection.vue",
+				"ext.rules/components/MultiTextInput.vue",
+				"ext.rules/components/RuleActions.vue",
+				"ext.rules/components/RuleConditions.vue",
+				"ext.rules/components/RulesTable.vue",
+				"ext.rules/composables/useRules.js",
+				"ext.rules/utils/ruleTransformers.js",
 				{
 					"name": "ext.rules/icons.json",
 					"callback": "MediaWiki\\ResourceLoader\\CodexModule::getIcons",
@@ -40,15 +51,19 @@
 						"cdxIconAdd",
 						"cdxIconEdit",
 						"cdxIconEllipsis",
+						"cdxIconPrevious",
 						"cdxIconTrash"
 					]
 				}
 			],
 			"codexComponents": [
 				"CdxButton",
+				"CdxField",
 				"CdxIcon",
+				"CdxLabel",
 				"CdxMenuButton",
-				"CdxTable"
+				"CdxTable",
+				"CdxTextInput"
 			],
 			"messages": [
 				"rules-table-caption",
@@ -58,7 +73,22 @@
 				"rules-table-empty-state",
 				"rules-table-add-rule",
 				"rules-table-edit-rule",
-				"rules-table-delete-rule"
+				"rules-table-delete-rule",
+				"rules-table-more-actions",
+				"rules-edit-rule-title",
+				"rules-edit-rule-back",
+				"rules-edit-rule-save",
+				"rules-edit-rule-cancel",
+				"rules-edit-rule-name-label",
+				"rules-edit-rule-condition-label",
+				"rules-edit-rule-condition-in-category",
+				"rules-edit-rule-condition-add",
+				"rules-edit-rule-action-label",
+				"rules-edit-rule-action-add-category",
+				"rules-multi-text-input-remove-item",
+				"rules-operator-and",
+				"rules-table-condition-in-category",
+				"rules-table-action-add-category"
 			]
 		}
 	},
