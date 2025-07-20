@@ -1,7 +1,7 @@
 {
 	"name": "professional-wiki/rules",
 	"type": "mediawiki-extension",
-	"description": "TODO",
+	"description": "Automatically categorize MediaWiki pages",
 	"keywords": [
 		"MediaWiki"
 	],
@@ -9,7 +9,7 @@
 	"license": "GPL-2.0-or-later",
 	"authors": [
 		{
-			"name": "Professional.Wiki",
+			"name": "Professional Wiki",
 			"email": "info@Professional.Wiki",
 			"homepage": "https://Professional.Wiki"
 		}
