@@ -6,6 +6,7 @@ const { RuleActionType, RuleConditionType } = require( '../types.js' );
 
 /**
  * Transforms the state from the edit form into a clean Rule object ready for saving.
+ *
  * @param {FormState} formState
  * @return {Rule}
  */
@@ -54,6 +55,7 @@ function ruleToTableRow( rule ) {
 	const andText = mw.msg( 'rules-operator-and' );
 
 	// TODO: Add links to the categories and bold the type and operator
+	// TODO: Do not hardcode the message keys
 	return {
 		name: rule.name,
 		conditions: rule.conditions.map( ( c ) => mw.msg( 'rules-table-condition-in-category', c.categories.join( ', ' ) ) ).join( ` ${ andText } ` ),

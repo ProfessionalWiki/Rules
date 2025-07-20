@@ -61,11 +61,13 @@ const placeholderRules = [
 ];
 
 /**
+ * @param {Rule[]} [initialRules]
  * @return {RulesComposable}
  */
-function useRules() {
+function useRules( initialRules ) {
+	// TODO: Refactor the rules injection when the API is ready
 	/** @type {import('vue').Ref<Rule[]>} */
-	const rules = ref( placeholderRules );
+	const rules = ref( [ ...( initialRules || placeholderRules ) ] );
 
 	/**
 	 * @param {Rule} rule
