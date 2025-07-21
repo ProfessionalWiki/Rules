@@ -8,7 +8,7 @@
 		"lint:fix:js": "npm -s run lint:js -- --fix",
 		"lint:fix:styles": "npm -s run lint:styles -- --fix",
 		"lint:js": "eslint --cache .",
-		"lint:styles": "stylelint \"**/*.{less,css}\"",
+		"lint:styles": "stylelint \"**/*.{less,css,vue}\"",
 		"lint:i18n": "banana-checker i18n/"
 	},
 	"devDependencies": {
