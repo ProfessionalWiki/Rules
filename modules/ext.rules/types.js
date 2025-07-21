@@ -57,7 +57,7 @@ const RuleConditionType = Object.freeze( {
 
 /**
  * @typedef {object} FormState
- * @property {string} ruleName
+ * @property {string} name
  * @property {FormCondition[]} conditions
  * @property {FormAction[]} actions
  */

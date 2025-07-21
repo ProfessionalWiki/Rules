@@ -17,7 +17,7 @@ describe( 'formStateToRule', () => {
 
 		/** @type {FormState} */
 		const formState = {
-			ruleName: testRuleName,
+			name: testRuleName,
 			conditions: [ {
 				type: 'does-not-matter-because-it-is-ignored',
 				categories: testConditionCategories,

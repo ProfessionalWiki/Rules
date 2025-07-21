@@ -13,7 +13,7 @@ const { RuleActionType, RuleConditionType } = require( '../types.js' );
 function formStateToRule( formState ) {
 	/** @type {Rule} */
 	const rule = {
-		name: formState.ruleName,
+		name: formState.name,
 		conditions: [],
 		actions: []
 	};
