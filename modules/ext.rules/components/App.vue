@@ -91,3 +91,15 @@ module.exports = defineComponent( {
 	}
 } );
 </script>
+
+<style lang="less">
+/**
+ * Hide the clear your cache message and JSON code block in default MediaWiki JSON pages.
+ * This is put here to ensure that they are only hidden when the Vue app is mounted.
+ */
+/* stylelint-disable-next-line selector-max-id */
+#mw-clearyourcache,
+.mw-json {
+	display: none;
+}
+</style>
