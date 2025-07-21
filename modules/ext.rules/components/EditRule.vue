@@ -70,25 +70,6 @@ module.exports = defineComponent( {
 	},
 	emits: [ 'save', 'update:open' ],
 	setup( props, { emit } ) {
-		const createDefaultFormState = () => ( {
-			name: '',
-			conditions: [
-				{
-					type: RuleConditionType.IN_CATEGORY,
-					categories: [ '' ],
-					inputComponent: markRaw( MultiTextInput ),
-					isFieldset: true
-				}
-			],
-			actions: [
-				{
-					type: RuleActionType.ADD_CATEGORY,
-					category: '',
-					inputComponent: markRaw( CdxTextInput )
-				}
-			]
-		} );
-
 		const formState = reactive( createDefaultFormState() );
 
 		const dialogTitle = computed( () => (
@@ -96,6 +77,12 @@ module.exports = defineComponent( {
 				mw.msg( 'rules-table-edit-rule' ) :
 				mw.msg( 'rules-table-add-rule' )
 		) );
+
+		watch( () => props.open, ( isOpen ) => {
+			if ( isOpen && !props.rule ) {
+				resetFormState();
+			}
+		} );
 
 		watch( () => props.rule, ( newRule ) => {
 			if ( newRule ) {
@@ -113,13 +100,36 @@ module.exports = defineComponent( {
 						inputComponent: markRaw( CdxTextInput )
 					} )
 				);
-			} else {
-				const defaultState = createDefaultFormState();
-				formState.name = defaultState.name;
-				formState.conditions = defaultState.conditions;
-				formState.actions = defaultState.actions;
 			}
 		}, { immediate: true } );
+
+		function createDefaultFormState() {
+			return {
+				name: '',
+				conditions: [
+					{
+						type: RuleConditionType.IN_CATEGORY,
+						categories: [ '' ],
+						inputComponent: markRaw( MultiTextInput ),
+						isFieldset: true
+					}
+				],
+				actions: [
+					{
+						type: RuleActionType.ADD_CATEGORY,
+						category: '',
+						inputComponent: markRaw( CdxTextInput )
+					}
+				]
+			};
+		}
+
+		function resetFormState() {
+			const defaultState = createDefaultFormState();
+			formState.name = defaultState.name;
+			formState.conditions = defaultState.conditions;
+			formState.actions = defaultState.actions;
+		}
 
 		function onSaveClick() {
 			emit( 'save', formStateToRule( formState ) );
