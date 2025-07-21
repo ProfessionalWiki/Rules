@@ -20,7 +20,7 @@
 			<div class="ext-rules-editrule-form-section">
 				<cdx-field>
 					<cdx-text-input
-						v-model="ruleName"
+						v-model="name"
 					></cdx-text-input>
 
 					<template #label>
@@ -89,7 +89,7 @@ module.exports = defineComponent( {
 	emits: [ 'back', 'save' ],
 	setup( props, { emit } ) {
 		const formState = reactive( {
-			ruleName: '',
+			name: '',
 			conditions: [
 				{
 					type: RuleConditionType.IN_CATEGORY,
@@ -108,7 +108,7 @@ module.exports = defineComponent( {
 		} );
 
 		if ( props.rule ) {
-			formState.ruleName = props.rule.name;
+			formState.name = props.rule.name;
 			formState.conditions = props.rule.conditions.map(
 				( /** @type {import('../types.js').RuleCondition} */ c ) => ( {
 					...c,
