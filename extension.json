@@ -58,6 +58,7 @@
 			],
 			"codexComponents": [
 				"CdxButton",
+				"CdxDialog",
 				"CdxField",
 				"CdxIcon",
 				"CdxLabel",
@@ -75,10 +76,7 @@
 				"rules-table-edit-rule",
 				"rules-table-delete-rule",
 				"rules-table-more-actions",
-				"rules-edit-rule-title",
-				"rules-edit-rule-back",
 				"rules-edit-rule-save",
-				"rules-edit-rule-cancel",
 				"rules-edit-rule-name-label",
 				"rules-edit-rule-condition-label",
 				"rules-edit-rule-condition-in-category",
