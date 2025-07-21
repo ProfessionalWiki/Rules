@@ -125,13 +125,11 @@ module.exports = defineComponent( {
 		}
 
 		function onBackClick() {
-			// TODO: Implement back
 			emit( 'back' );
 		}
 
 		function onSaveClick() {
-			const rule = formStateToRule( formState );
-			emit( 'save', rule );
+			emit( 'save', formStateToRule( formState ) );
 		}
 
 		return {

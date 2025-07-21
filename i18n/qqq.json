@@ -32,5 +32,8 @@
 	"rules-multi-text-input-remove-item": "The label of the button to remove an item",
 	"rules-operator-and": "The label of the operator for the AND conjunction",
 	"rules-table-condition-in-category": "The label of the condition for the in category",
-	"rules-table-action-add-category": "The label of the action for the add category"
+	"rules-table-action-add-category": "The label of the action for the add category",
+	"rules-notification-added-rule": "The title of the notification for the added rule",
+	"rules-notification-updated-rule": "The title of the notification for the updated rule",
+	"rules-notification-deleted-rule": "The title of the notification for the deleted rule"
 }

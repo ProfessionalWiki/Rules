@@ -88,7 +88,10 @@
 				"rules-multi-text-input-remove-item",
 				"rules-operator-and",
 				"rules-table-condition-in-category",
-				"rules-table-action-add-category"
+				"rules-table-action-add-category",
+				"rules-notification-added-rule",
+				"rules-notification-updated-rule",
+				"rules-notification-deleted-rule"
 			]
 		}
 	},

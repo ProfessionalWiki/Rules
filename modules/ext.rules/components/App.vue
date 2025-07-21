@@ -11,7 +11,7 @@
 		:rules="rules"
 		@add-rule="onAddRule"
 		@edit-rule="onEditRule"
-		@delete-rule="deleteRule"
+		@delete-rule="onDeleteRule"
 	></rules-table>
 </template>
 
@@ -53,12 +53,35 @@ module.exports = defineComponent( {
 		/**
 		 * @param {import('../types.js').Rule} rule
 		 */
+		function onDeleteRule( rule ) {
+			const deletedRule = deleteRule( rule );
+			if ( deletedRule ) {
+				mw.notify(
+					deletedRule.name,
+					{ title: mw.msg( 'rules-notification-deleted-rule' ), type: 'success' }
+				);
+			}
+		}
+
+		/**
+		 * @param {import('../types.js').Rule} rule
+		 */
 		function onSaveRule( rule ) {
 			const ruleBeingEdited = ruleToEdit.value;
 			if ( ruleBeingEdited ) {
-				updateRule( ruleBeingEdited, rule );
+				const updatedRule = updateRule( ruleBeingEdited, rule );
+				if ( updatedRule ) {
+					mw.notify(
+						updatedRule.name,
+						{ title: mw.msg( 'rules-notification-updated-rule' ), type: 'success' }
+					);
+				}
 			} else {
-				addRule( rule );
+				const newRule = addRule( rule );
+				mw.notify(
+					newRule.name,
+					{ title: mw.msg( 'rules-notification-added-rule' ), type: 'success' }
+				);
 			}
 
 			showRulesList();
@@ -70,7 +93,7 @@ module.exports = defineComponent( {
 			ruleToEdit,
 			onAddRule,
 			onEditRule,
-			deleteRule,
+			onDeleteRule,
 			onSaveRule,
 			showRulesList
 		};
