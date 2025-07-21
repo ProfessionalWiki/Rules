@@ -6,9 +6,9 @@ const { RuleActionType, RuleConditionType } = require( '../types.js' );
 /**
  * @typedef {object} RulesComposable
  * @property {import('vue').Ref<Rule[]>} rules
- * @property {( rule: Rule ) => void} addRule
- * @property {( originalRule: Rule, updatedRule: Rule ) => void} updateRule
- * @property {( rule: Rule ) => void} deleteRule
+ * @property {( rule: Rule ) => Rule} addRule
+ * @property {( originalRule: Rule, updatedRule: Rule ) => Rule | null} updateRule
+ * @property {( rule: Rule ) => Rule | null} deleteRule
  */
 
 /** @type {Rule[]} */
@@ -71,39 +71,45 @@ function useRules( initialRules ) {
 
 	/**
 	 * @param {Rule} rule
+	 * @return {Rule}
 	 */
 	function addRule( rule ) {
 		// TODO: Save to API
 		rules.value.push( rule );
-		// TODO: Show success notification
+		return rule;
 	}
 
 	/**
 	 * @param {Rule} originalRule
 	 * @param {Rule} updatedRule
+	 * @return {Rule | null}
 	 */
 	function updateRule( originalRule, updatedRule ) {
 		// TODO: Save to API
 		const ruleIndex = rules.value.findIndex( ( r ) => r.name === originalRule.name );
+
 		if ( ruleIndex !== -1 ) {
 			rules.value[ ruleIndex ] = updatedRule;
+			return updatedRule;
 		}
-		// TODO: Show success notification
+
+		return null;
 	}
 
 	/**
 	 * @param {Rule} rule
+	 * @return {Rule | null}
 	 */
 	function deleteRule( rule ) {
 		// TODO: Delete from API
 		const ruleIndex = rules.value.findIndex( ( r ) => r.name === rule.name );
 
 		if ( ruleIndex === -1 ) {
-			return;
+			return null;
 		}
 
 		rules.value.splice( ruleIndex, 1 );
-		mw.notify( `Deleted rule: "${ rule.name }"`, { type: 'success' } );
+		return rule;
 	}
 
 	return {
