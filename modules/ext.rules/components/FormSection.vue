@@ -28,10 +28,10 @@ module.exports = defineComponent( {
 
 .ext-rules-form-section {
 	&-title {
-		font-size: @font-size-large;
+		font-size: @font-size-medium;
 		font-weight: @font-weight-bold;
 		// Fallback for pre-Codex 2.0 MediaWiki versions
-		line-height: var( --line-height-large, 1.75rem );
+		line-height: var( --line-height-medium, 1.625rem );
 	}
 
 	&-content {

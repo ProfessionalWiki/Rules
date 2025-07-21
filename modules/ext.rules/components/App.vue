@@ -1,13 +1,11 @@
 <template>
 	<edit-rule
-		v-if="screen === 'edit-rule'"
+		v-model:open="isFormVisible"
 		:rule="ruleToEdit"
-		@back="showRulesList"
 		@save="onSaveRule"
 	></edit-rule>
 
 	<rules-table
-		v-if="screen === 'rules-list'"
 		:rules="rules"
 		@add-rule="onAddRule"
 		@edit-rule="onEditRule"
@@ -28,14 +26,14 @@ module.exports = defineComponent( {
 		RulesTable
 	},
 	setup() {
-		const screen = ref( 'rules-list' );
+		const isFormVisible = ref( false );
 		const { rules, addRule, updateRule, deleteRule } = useRules();
 		/** @type {import('vue').Ref<import('../types.js').Rule | null>} */
 		const ruleToEdit = ref( null );
 
 		function onAddRule() {
 			ruleToEdit.value = null;
-			screen.value = 'edit-rule';
+			isFormVisible.value = true;
 		}
 
 		/**
@@ -43,11 +41,7 @@ module.exports = defineComponent( {
 		 */
 		function onEditRule( rule ) {
 			ruleToEdit.value = rule;
-			screen.value = 'edit-rule';
-		}
-
-		function showRulesList() {
-			screen.value = 'rules-list';
+			isFormVisible.value = true;
 		}
 
 		/**
@@ -83,19 +77,16 @@ module.exports = defineComponent( {
 					{ title: mw.msg( 'rules-notification-added-rule' ), type: 'success' }
 				);
 			}
-
-			showRulesList();
 		}
 
 		return {
 			rules,
-			screen,
+			isFormVisible,
 			ruleToEdit,
 			onAddRule,
 			onEditRule,
 			onDeleteRule,
-			onSaveRule,
-			showRulesList
+			onSaveRule
 		};
 	}
 } );

@@ -1,22 +1,19 @@
 <template>
-	<div class="ext-rules-editrule">
-		<cdx-button
-			class="ext-rules-editrule-back-button"
-			weight="quiet"
-			@click="onBackClick"
-		>
-			<cdx-icon :icon="cdxIconPrevious"></cdx-icon>
-			{{ $i18n( 'rules-edit-rule-back' ).text() }}
-		</cdx-button>
-
+	<cdx-dialog
+		:open="open"
+		:title="dialogTitle"
+		:use-close-button="true"
+		:show-dividers="true"
+		:primary-action="{
+			label: $i18n( 'rules-edit-rule-save' ).text(),
+			actionType: 'progressive'
+		}"
+		@primary="onSaveClick"
+		@update:open="$emit( 'update:open', $event )"
+	>
 		<form
 			class="ext-rules-editrule-form"
-			@submit.prevent="onSaveClick"
 		>
-			<div class="ext-rules-editrule-form-title">
-				{{ $i18n( 'rules-edit-rule-title' ).text() }}
-			</div>
-
 			<div class="ext-rules-editrule-form-section">
 				<cdx-field>
 					<cdx-text-input
@@ -36,34 +33,16 @@
 			<div class="ext-rules-editrule-form-section">
 				<rule-actions :actions="actions"></rule-actions>
 			</div>
-
-			<div class="ext-rules-editrule-form-buttons">
-				<cdx-button
-					type="button"
-					@click="onBackClick"
-				>
-					{{ $i18n( 'rules-edit-rule-cancel' ).text() }}
-				</cdx-button>
-
-				<cdx-button
-					type="submit"
-					action="progressive"
-					weight="primary"
-				>
-					{{ $i18n( 'rules-edit-rule-save' ).text() }}
-				</cdx-button>
-			</div>
 		</form>
-	</div>
+	</cdx-dialog>
 </template>
 
 <script>
 /**
  * @typedef {import('../types.js').Rule} Rule
  */
-const { defineComponent, reactive, toRefs, markRaw } = require( 'vue' );
-const { CdxButton, CdxField, CdxIcon, CdxTextInput } = require( '../../codex.js' );
-const { cdxIconPrevious } = require( '../icons.json' );
+const { defineComponent, reactive, toRefs, markRaw, computed, watch } = require( 'vue' );
+const { CdxDialog, CdxField, CdxTextInput } = require( '../../codex.js' );
 const MultiTextInput = require( './MultiTextInput.vue' );
 const RuleConditions = require( './RuleConditions.vue' );
 const RuleActions = require( './RuleActions.vue' );
@@ -73,9 +52,8 @@ const { formStateToRule } = require( '../utils/ruleTransformers.js' );
 module.exports = defineComponent( {
 	name: 'EditRule',
 	components: {
-		CdxButton,
+		CdxDialog,
 		CdxField,
-		CdxIcon,
 		CdxTextInput,
 		RuleConditions,
 		RuleActions
@@ -84,11 +62,15 @@ module.exports = defineComponent( {
 		rule: {
 			type: Object,
 			default: null
+		},
+		open: {
+			type: Boolean,
+			default: false
 		}
 	},
-	emits: [ 'back', 'save' ],
+	emits: [ 'save', 'update:open' ],
 	setup( props, { emit } ) {
-		const formState = reactive( {
+		const createDefaultFormState = () => ( {
 			name: '',
 			conditions: [
 				{
@@ -107,36 +89,47 @@ module.exports = defineComponent( {
 			]
 		} );
 
-		if ( props.rule ) {
-			formState.name = props.rule.name;
-			formState.conditions = props.rule.conditions.map(
-				( /** @type {import('../types.js').RuleCondition} */ c ) => ( {
-					...c,
-					inputComponent: markRaw( MultiTextInput ),
-					isFieldset: true
-				} )
-			);
-			formState.actions = props.rule.actions.map(
-				( /** @type {import('../types.js').RuleAction} */ a ) => ( {
-					...a,
-					inputComponent: markRaw( CdxTextInput )
-				} )
-			);
-		}
+		const formState = reactive( createDefaultFormState() );
 
-		function onBackClick() {
-			emit( 'back' );
-		}
+		const dialogTitle = computed( () => (
+			props.rule ?
+				mw.msg( 'rules-table-edit-rule' ) :
+				mw.msg( 'rules-table-add-rule' )
+		) );
+
+		watch( () => props.rule, ( newRule ) => {
+			if ( newRule ) {
+				formState.name = newRule.name;
+				formState.conditions = newRule.conditions.map(
+					( /** @type {import('../types.js').RuleCondition} */ c ) => ( {
+						...c,
+						inputComponent: markRaw( MultiTextInput ),
+						isFieldset: true
+					} )
+				);
+				formState.actions = newRule.actions.map(
+					( /** @type {import('../types.js').RuleAction} */ a ) => ( {
+						...a,
+						inputComponent: markRaw( CdxTextInput )
+					} )
+				);
+			} else {
+				const defaultState = createDefaultFormState();
+				formState.name = defaultState.name;
+				formState.conditions = defaultState.conditions;
+				formState.actions = defaultState.actions;
+			}
+		}, { immediate: true } );
 
 		function onSaveClick() {
 			emit( 'save', formStateToRule( formState ) );
+			emit( 'update:open', false );
 		}
 
 		return {
 			...toRefs( formState ),
-			onBackClick,
-			onSaveClick,
-			cdxIconPrevious
+			dialogTitle,
+			onSaveClick
 		};
 	}
 } );
@@ -146,37 +139,23 @@ module.exports = defineComponent( {
 @import 'mediawiki.skin.variables.less';
 
 .ext-rules-editrule {
-	&-back-button {
-		// Align the back button with the left edge of the page
-		// @spacing-75 is the padding of CdxButton
-		margin-left: -@spacing-75;
-	}
-
 	&-form {
 		margin-top: @spacing-150;
-
-		&-title {
-			font-size: @font-size-x-large;
-			font-weight: @font-weight-bold;
-			// Fallback for pre-Codex 2.0 MediaWiki versions
-			line-height: var( --line-height-x-large, 1.875rem );
-		}
 
 		&-section {
 			padding-block: @spacing-150;
 
+			&:first-child {
+				padding-top: 0;
+			}
+
+			&:last-child {
+				padding-bottom: 0;
+			}
+
 			+ .ext-rules-editrule-form-section {
 				border-top: @border-subtle;
 			}
-		}
-
-		&-buttons {
-			border-top: @border-subtle;
-			margin-top: @spacing-100;
-			padding-top: @spacing-100;
-			display: flex;
-			justify-content: space-between;
-			gap: @spacing-100;
 		}
 	}
 }
