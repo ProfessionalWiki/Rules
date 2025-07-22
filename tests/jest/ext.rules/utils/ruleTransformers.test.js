@@ -1,10 +1,10 @@
-const { formStateToRule, ruleToTableRow } = require( '../../../modules/ext.rules/utils/ruleTransformers.js' );
-const { RuleActionType, RuleConditionType } = require( '../../../modules/ext.rules/types.js' );
+const { formStateToRule, ruleToTableRow } = require( '../../../../modules/ext.rules/utils/ruleTransformers.js' );
+const { RuleActionType, RuleConditionType } = require( '../../../../modules/ext.rules/types.js' );
 
 /**
- * @typedef {import('../../../modules/ext.rules/types.js').FormState} FormState
- * @typedef {import('../../../modules/ext.rules/types.js').Rule} Rule
- * @typedef {import('../../../modules/ext.rules/types.js').TableRow} TableRow
+ * @typedef {import('../../../../modules/ext.rules/types.js').FormState} FormState
+ * @typedef {import('../../../../modules/ext.rules/types.js').Rule} Rule
+ * @typedef {import('../../../../modules/ext.rules/types.js').TableRow} TableRow
  */
 
 describe( 'formStateToRule', () => {
