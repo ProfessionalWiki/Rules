@@ -4,6 +4,8 @@ declare( strict_types = 1 );
 
 namespace ProfessionalWiki\Rules\Application;
 
+use MediaWiki\Parser\ParserOutput;
+
 class ApplyRulesUseCase {
 
 	public function __construct(
@@ -11,14 +13,16 @@ class ApplyRulesUseCase {
 	) {
 	}
 
-	public function applyToPage( /* TODO: some page identifier */ ): void {
+	public function applyToPage( ParserOutput $parserOutput ): void {
 		$rules = $this->ruleListLookup->getAllRules();
 
-		$presentCategories = []; // TODO: get categories from page
+		$presentCategories = $parserOutput->getCategoryNames();
 
 		$categoriesToAdd = $rules->run( $presentCategories );
 
-		shuffle( $categoriesToAdd ); // TODO: add categories to page
+		foreach ( $categoriesToAdd as $category ) {
+			$parserOutput->addCategory( $category );
+		}
 	}
 
 }

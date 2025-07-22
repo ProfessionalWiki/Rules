@@ -110,7 +110,8 @@
 	},
 	"Hooks": {
 		"BeforePageDisplay": "rules",
-		"ContentHandlerDefaultModelFor": "rules"
+		"ContentHandlerDefaultModelFor": "rules",
+		"ContentAlterParserOutput": "rules"
 	},
 	"HookHandlers": {
 		"rules": {

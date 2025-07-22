@@ -4,6 +4,12 @@ declare( strict_types = 1 );
 
 namespace ProfessionalWiki\Rules;
 
+use MediaWiki\MediaWikiServices;
+use ProfessionalWiki\Rules\Application\ApplyRulesUseCase;
+use ProfessionalWiki\Rules\Application\RuleListLookup;
+use ProfessionalWiki\Rules\Persistence\PageRuleListLookup;
+use ProfessionalWiki\Rules\Persistence\RulesDeserializer;
+
 class RulesExtension {
 
 	public const RULES_PAGE_TITLE = 'Rules';
@@ -13,6 +19,24 @@ class RulesExtension {
 		static $instance = null;
 		$instance ??= new self();
 		return $instance;
+	}
+
+	public function newApplyRulesUseCase(): ApplyRulesUseCase {
+		return new ApplyRulesUseCase(
+			ruleListLookup: $this->newPageRuleListLookup()
+		);
+	}
+
+	private function newPageRuleListLookup(): RuleListLookup {
+		return new PageRuleListLookup(
+			titleFactory: MediaWikiServices::getInstance()->getTitleFactory(),
+			wikiPageFactory: MediaWikiServices::getInstance()->getWikiPageFactory(),
+			deserializer: $this->newRulesDeserializer()
+		);
+	}
+
+	private function newRulesDeserializer(): RulesDeserializer {
+		return new RulesDeserializer();
 	}
 
 }
