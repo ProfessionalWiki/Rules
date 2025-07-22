@@ -109,7 +109,8 @@
 	},
 	"Hooks": {
 		"BeforePageDisplay": "rules",
-		"ContentHandlerDefaultModelFor": "rules"
+		"ContentHandlerDefaultModelFor": "rules",
+		"PageSaveComplete": "rules"
 	},
 	"HookHandlers": {
 		"rules": {

@@ -6,11 +6,12 @@ namespace ProfessionalWiki\Rules\EntryPoints;
 
 use MediaWiki\Output\Hook\BeforePageDisplayHook;
 use MediaWiki\Revision\Hook\ContentHandlerDefaultModelForHook;
+use MediaWiki\Storage\Hook\PageSaveCompleteHook;
 use MediaWiki\Title\Title;
 use MediaWiki\Title\TitleFactory;
 use ProfessionalWiki\Rules\RulesExtension;
 
-class RulesHooks implements BeforePageDisplayHook, ContentHandlerDefaultModelForHook {
+class RulesHooks implements BeforePageDisplayHook, ContentHandlerDefaultModelForHook, PageSaveCompleteHook {
 
 	public function __construct(
 		private TitleFactory $titleFactory
@@ -43,6 +44,10 @@ class RulesHooks implements BeforePageDisplayHook, ContentHandlerDefaultModelFor
 	private function isRulesPage( Title $title ): bool {
 		return $this->titleFactory->newFromText( RulesExtension::RULES_PAGE_TITLE, NS_MEDIAWIKI )
 			?->equals( $title ) ?? false;
+	}
+
+	public function onPageSaveComplete( $wikiPage, $user, $summary, $flags, $revisionRecord, $editResult ) {
+		RulesExtension::getInstance()->newApplyRulesUseCase()->applyToPage( $wikiPage );
 	}
 
 }
