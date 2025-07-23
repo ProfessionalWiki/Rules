@@ -18,18 +18,11 @@ const { defineComponent, ref, watch } = require( 'vue' );
 const EditRule = require( './EditRule.vue' );
 const RulesTable = require( './RulesTable.vue' );
 const { useRules } = require( '../composables/useRules.js' );
+const { getInitialRules } = require( '../utils/rulePage.js' );
 
 /**
  * @typedef {import('../types.js').Rule} Rule
  */
-
-/**
- * @return {Rule[] | undefined}
- */
-function getInitialRules() {
-	// eslint-disable-next-line es-x/no-optional-chaining
-	return mw.config.get( 'rules' )?.value?.rules;
-}
 
 module.exports = defineComponent( {
 	name: 'App',

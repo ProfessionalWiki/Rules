@@ -43,6 +43,7 @@
 				"ext.rules/components/RuleConditions.vue",
 				"ext.rules/components/RulesTable.vue",
 				"ext.rules/composables/useRules.js",
+				"ext.rules/utils/rulePage.js",
 				"ext.rules/utils/ruleTransformers.js",
 				{
 					"name": "ext.rules/icons.json",
