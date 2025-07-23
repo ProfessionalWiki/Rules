@@ -14,10 +14,22 @@
 </template>
 
 <script>
-const { defineComponent, ref } = require( 'vue' );
+const { defineComponent, ref, watch } = require( 'vue' );
 const EditRule = require( './EditRule.vue' );
 const RulesTable = require( './RulesTable.vue' );
 const { useRules } = require( '../composables/useRules.js' );
+
+/**
+ * @typedef {import('../types.js').Rule} Rule
+ */
+
+/**
+ * @return {Rule[] | undefined}
+ */
+function getInitialRules() {
+	// eslint-disable-next-line es-x/no-optional-chaining
+	return mw.config.get( 'rules' )?.value?.rules;
+}
 
 module.exports = defineComponent( {
 	name: 'App',
@@ -27,14 +39,9 @@ module.exports = defineComponent( {
 	},
 	setup() {
 		const isFormVisible = ref( false );
-		/** @type {import('vue').Ref<import('../types.js').Rule | null>} */
+		/** @type {import('vue').Ref<Rule | null>} */
 		const ruleToEdit = ref( null );
-		const { rules, addRule, updateRule, deleteRule } = useRules( getInitialRules() );
-
-		function getInitialRules() {
-			// eslint-disable-next-line es-x/no-optional-chaining
-			return mw.config.get( 'rules' )?.value?.rules;
-		}
+		const { rules, addRule, updateRule, deleteRule, saveRules } = useRules( getInitialRules() );
 
 		function onAddRule() {
 			ruleToEdit.value = null;
@@ -42,7 +49,7 @@ module.exports = defineComponent( {
 		}
 
 		/**
-		 * @param {import('../types.js').Rule} rule
+		 * @param {Rule} rule
 		 */
 		function onEditRule( rule ) {
 			ruleToEdit.value = rule;
@@ -50,7 +57,7 @@ module.exports = defineComponent( {
 		}
 
 		/**
-		 * @param {import('../types.js').Rule} rule
+		 * @param {Rule} rule
 		 */
 		function onDeleteRule( rule ) {
 			const deletedRule = deleteRule( rule );
@@ -63,7 +70,7 @@ module.exports = defineComponent( {
 		}
 
 		/**
-		 * @param {import('../types.js').Rule} rule
+		 * @param {Rule} rule
 		 */
 		function onSaveRule( rule ) {
 			const ruleBeingEdited = ruleToEdit.value;
@@ -83,6 +90,8 @@ module.exports = defineComponent( {
 				);
 			}
 		}
+
+		watch( rules, saveRules, { deep: true } );
 
 		return {
 			rules,

@@ -4,10 +4,12 @@ const { ref } = require( 'vue' );
 
 /**
  * @typedef {object} RulesComposable
+ * @property {import('vue').Ref<boolean>} saving
  * @property {import('vue').Ref<Rule[]>} rules
  * @property {( rule: Rule ) => Rule} addRule
  * @property {( originalRule: Rule, updatedRule: Rule ) => Rule | null} updateRule
  * @property {( rule: Rule ) => Rule | null} deleteRule
+ * @property {() => Promise<any>} saveRules
  */
 
 /**
@@ -15,6 +17,7 @@ const { ref } = require( 'vue' );
  * @return {RulesComposable}
  */
 function useRules( initialRules = [] ) {
+	const saving = ref( false );
 	/** @type {import('vue').Ref<Rule[]>} */
 	const rules = ref( [ ...initialRules ] );
 
@@ -23,7 +26,6 @@ function useRules( initialRules = [] ) {
 	 * @return {Rule}
 	 */
 	function addRule( rule ) {
-		// TODO: Save to API
 		rules.value.push( rule );
 		return rule;
 	}
@@ -34,7 +36,6 @@ function useRules( initialRules = [] ) {
 	 * @return {Rule | null}
 	 */
 	function updateRule( originalRule, updatedRule ) {
-		// TODO: Save to API
 		const ruleIndex = rules.value.findIndex( ( r ) => r.name === originalRule.name );
 
 		if ( ruleIndex !== -1 ) {
@@ -50,7 +51,6 @@ function useRules( initialRules = [] ) {
 	 * @return {Rule | null}
 	 */
 	function deleteRule( rule ) {
-		// TODO: Delete from API
 		const ruleIndex = rules.value.findIndex( ( r ) => r.name === rule.name );
 
 		if ( ruleIndex === -1 ) {
@@ -61,11 +61,31 @@ function useRules( initialRules = [] ) {
 		return rule;
 	}
 
+	/**
+	 * @return {Promise<any>}
+	 */
+	async function saveRules() {
+		saving.value = true;
+		try {
+			const content = JSON.stringify( { rules: rules.value }, null, 2 );
+			const api = new mw.Api();
+			return await api.postWithToken( 'csrf', {
+				action: 'edit',
+				title: mw.config.get( 'wgPageName' ),
+				text: content
+			} );
+		} finally {
+			saving.value = false;
+		}
+	}
+
 	return {
+		saving,
 		rules,
 		addRule,
 		updateRule,
-		deleteRule
+		deleteRule,
+		saveRules
 	};
 }
 
