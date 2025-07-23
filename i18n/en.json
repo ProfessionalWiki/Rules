@@ -31,5 +31,6 @@
 	"rules-table-action-add-category": "Add to category: $1",
 	"rules-notification-added-rule": "Added rule",
 	"rules-notification-updated-rule": "Updated rule",
-	"rules-notification-deleted-rule": "Deleted rule"
+	"rules-notification-deleted-rule": "Deleted rule",
+	"rules-bot-comment-init": "Initialize rules page"
 }

@@ -14,7 +14,7 @@ use ProfessionalWiki\Rules\RulesExtension;
 class RulesContentHandler extends JsonContentHandler {
 
 	public function __construct( $modelId = RulesExtension::RULES_CONTENT_MODEL ) {
-		parent::__construct( $modelId, [ RulesExtension::RULES_CONTENT_MODEL ] );
+		parent::__construct( $modelId );
 	}
 
 	protected function getContentClass(): string {
@@ -43,10 +43,10 @@ class RulesContentHandler extends JsonContentHandler {
 		Content $content,
 		ContentParseParams $cpoParams,
 		ParserOutput &$output
-	) {
+	): void {
 		$output = new ParserOutput();
 
-		$output->addModules( [ 'ext.rules' ] );
 		$output->setRawText( '<div id="ext-rules-app"></div>' );
+		$output->addModules( [ 'ext.rules' ] );
 	}
 }

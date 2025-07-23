@@ -105,7 +105,8 @@
 		}
 	},
 	"Hooks": {
-		"ContentHandlerDefaultModelFor": "rules"
+		"ContentHandlerDefaultModelFor": "rules",
+		"LoadExtensionSchemaUpdates": "rules"
 	},
 	"HookHandlers": {
 		"rules": {
