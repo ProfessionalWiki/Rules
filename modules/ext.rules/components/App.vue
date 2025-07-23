@@ -27,9 +27,14 @@ module.exports = defineComponent( {
 	},
 	setup() {
 		const isFormVisible = ref( false );
-		const { rules, addRule, updateRule, deleteRule } = useRules();
 		/** @type {import('vue').Ref<import('../types.js').Rule | null>} */
 		const ruleToEdit = ref( null );
+		const { rules, addRule, updateRule, deleteRule } = useRules( getInitialRules() );
+
+		function getInitialRules() {
+			// eslint-disable-next-line es-x/no-optional-chaining
+			return mw.config.get( 'rules' )?.value?.rules;
+		}
 
 		function onAddRule() {
 			ruleToEdit.value = null;

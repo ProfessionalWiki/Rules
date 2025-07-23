@@ -44,8 +44,8 @@ class RulesContentHandler extends JsonContentHandler {
 		ContentParseParams $cpoParams,
 		ParserOutput &$output
 	): void {
-		$output = new ParserOutput();
-
+		/** @var RulesContent $content */
+		$output->setJsConfigVar( 'rules', $content->getData() );
 		$output->setRawText( '<div id="ext-rules-app"></div>' );
 		$output->addModules( [ 'ext.rules' ] );
 	}

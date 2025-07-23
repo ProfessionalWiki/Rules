@@ -1,5 +1,4 @@
 const { ref } = require( 'vue' );
-const { RuleActionType, RuleConditionType } = require( '../types.js' );
 
 /** @typedef {import('../types.js').Rule} Rule */
 
@@ -11,63 +10,13 @@ const { RuleActionType, RuleConditionType } = require( '../types.js' );
  * @property {( rule: Rule ) => Rule | null} deleteRule
  */
 
-/** @type {Rule[]} */
-const placeholderRules = [
-	{
-		name: 'Shorthair cats',
-		conditions: [
-			{
-				type: RuleConditionType.IN_CATEGORY,
-				categories: [ 'Siamese', 'British Shorthair', 'Abyssinian', 'Burmese' ]
-			}
-		],
-		actions: [
-			{
-				type: RuleActionType.ADD_CATEGORY,
-				category: 'Shorthair cats'
-			}
-		]
-	},
-	{
-		name: 'Mediumhair cats',
-		conditions: [
-			{
-				type: RuleConditionType.IN_CATEGORY,
-				categories: [ 'American Bobtail', 'Birman', 'Ragdoll', 'Siberian' ]
-			}
-		],
-		actions: [
-			{
-				type: RuleActionType.ADD_CATEGORY,
-				category: 'Mediumhair cats'
-			}
-		]
-	},
-	{
-		name: 'Longhair cats',
-		conditions: [
-			{
-				type: RuleConditionType.IN_CATEGORY,
-				categories: [ 'Persian', 'Maine Coon', 'Norwegian Forest Cat', 'Himalayan' ]
-			}
-		],
-		actions: [
-			{
-				type: RuleActionType.ADD_CATEGORY,
-				category: 'Longhair cats'
-			}
-		]
-	}
-];
-
 /**
  * @param {Rule[]} [initialRules]
  * @return {RulesComposable}
  */
-function useRules( initialRules ) {
-	// TODO: Refactor the rules injection when the API is ready
+function useRules( initialRules = [] ) {
 	/** @type {import('vue').Ref<Rule[]>} */
-	const rules = ref( [ ...( initialRules || placeholderRules ) ] );
+	const rules = ref( [ ...initialRules ] );
 
 	/**
 	 * @param {Rule} rule
