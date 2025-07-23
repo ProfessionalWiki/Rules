@@ -101,23 +101,19 @@
 	},
 	"SpecialPages": {
 		"Rules": {
-			"class": "ProfessionalWiki\\Rules\\EntryPoints\\SpecialRules",
-			"services": [
-				"TitleFactory"
-			]
+			"class": "ProfessionalWiki\\Rules\\EntryPoints\\SpecialRules"
 		}
 	},
 	"Hooks": {
-		"BeforePageDisplay": "rules",
 		"ContentHandlerDefaultModelFor": "rules"
 	},
 	"HookHandlers": {
 		"rules": {
-			"class": "ProfessionalWiki\\Rules\\EntryPoints\\RulesHooks",
-			"services": [
-				"TitleFactory"
-			]
+			"class": "ProfessionalWiki\\Rules\\EntryPoints\\RulesHooks"
 		}
+	},
+	"ContentHandlers": {
+		"rules": "ProfessionalWiki\\Rules\\EntryPoints\\RulesContentHandler"
 	},
 	"type": "other"
 }

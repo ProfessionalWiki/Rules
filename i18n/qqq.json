@@ -7,7 +7,6 @@
 			"Alistair3149"
 		]
 	},
-	"rules": "Helper message on the MediaWiki:Rules page",
 	"rules-message": "{{name}}\nThe name of the extension",
 	"rules-description": "{{Desc|name=Rules|url=https://github.com/ProfessionalWiki/Rules}}",
 	"rules-table-caption": "The caption of the rules table",
