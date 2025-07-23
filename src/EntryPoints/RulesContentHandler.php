@@ -21,11 +21,15 @@ class RulesContentHandler extends JsonContentHandler {
 		return RulesContent::class;
 	}
 
-	public function makeEmptyContent() {
+	public function isParserCacheSupported(): bool {
+		return true;
+	}
+
+	public function makeEmptyContent(): RulesContent {
 		return new RulesContent( RulesExtension::RULES_DEFAULT_CONFIG );
 	}
 
-	public function canBeUsedOn( Title $title ) {
+	public function canBeUsedOn( Title $title ): bool {
 		return RulesExtension::getInstance()->isRulesPage( $title );
 	}
 
