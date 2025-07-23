@@ -2,7 +2,8 @@
 	<cdx-table
 		v-model:sort="sort"
 		:caption="$i18n( 'rules-table-caption' ).text()"
-		:columns="columns"
+		:columns="tableData.length ? columns : []"
+		:pending="saving"
 		:data="tableData"
 		:use-row-headers="true"
 		@update:sort="onSort"
