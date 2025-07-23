@@ -67,7 +67,7 @@ function useRules( initialRules = [] ) {
 	async function saveRules() {
 		saving.value = true;
 		try {
-			const content = JSON.stringify( { rules: rules.value }, null, 2 );
+			const content = JSON.stringify( { rules: rules.value } );
 			const api = new mw.Api();
 			return await api.postWithToken( 'csrf', {
 				action: 'edit',
