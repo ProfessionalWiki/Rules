@@ -9,7 +9,11 @@ use ProfessionalWiki\Rules\RulesExtension;
 
 class RulesContent extends JsonContent {
 
-	public function __construct( $text, $modelId = RulesExtension::RULES_CONTENT_MODEL ) {
-		parent::__construct( $text, $modelId );
+	public function __construct( $text = null, $modelId = RulesExtension::RULES_CONTENT_MODEL ) {
+		parent::__construct( $text ?? $this->newDefaultAsString(), $modelId );
+	}
+
+	public function newDefaultAsString(): string {
+		return '{"rules":[]}';
 	}
 }

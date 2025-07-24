@@ -19,10 +19,6 @@ class RulesExtension {
 
 	public const RULES_SYSTEM_USER = 'Rules Bot';
 
-	public const RULES_DEFAULT_CONFIG = '{
-	"rules": []
-}';
-
 	public static function getInstance(): self {
 		/** @var ?RulesExtension $instance */
 		static $instance = null;

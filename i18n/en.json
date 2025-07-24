@@ -9,6 +9,8 @@
 	},
 	"rules-message": "Rules",
 	"rules-description": "TODO",
+	"rules-noscript-message": "Please enable JavaScript to see the Rules interface.",
+	"rules-refresh-message": "Please refresh the page to see the Rules interface.",
 	"rules-table-caption": "Rules",
 	"rules-table-column-name": "Name",
 	"rules-table-column-conditions": "Conditions",

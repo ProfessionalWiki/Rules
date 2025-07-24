@@ -107,7 +107,7 @@
 	},
 	"Hooks": {
 		"ContentHandlerDefaultModelFor": "rules",
-		"LoadExtensionSchemaUpdates": "rules"
+		"ShowMissingArticle": "rules"
 	},
 	"HookHandlers": {
 		"rules": {

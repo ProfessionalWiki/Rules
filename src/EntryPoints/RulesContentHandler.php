@@ -7,6 +7,7 @@ namespace ProfessionalWiki\Rules\EntryPoints;
 use MediaWiki\Content\Content;
 use MediaWiki\Content\Renderer\ContentParseParams;
 use MediaWiki\Content\JsonContentHandler;
+use MediaWiki\Html\Html;
 use MediaWiki\Parser\ParserOutput;
 use MediaWiki\Title\Title;
 use ProfessionalWiki\Rules\RulesExtension;
@@ -26,7 +27,7 @@ class RulesContentHandler extends JsonContentHandler {
 	}
 
 	public function makeEmptyContent(): RulesContent {
-		return new RulesContent( RulesExtension::RULES_DEFAULT_CONFIG );
+		return new RulesContent();
 	}
 
 	public function canBeUsedOn( Title $title ): bool {
@@ -50,7 +51,12 @@ class RulesContentHandler extends JsonContentHandler {
 	): void {
 		/** @var RulesContent $content */
 		$output->setJsConfigVar( 'rules', $content->getData() );
-		$output->setRawText( '<div id="ext-rules-app"></div>' );
+		$output->setRawText( $this->getVueAppHtml() );
 		$output->addModules( [ 'ext.rules' ] );
+	}
+
+	private function getVueAppHtml(): string {
+		return Html::element( 'div', [ 'id' => 'ext-rules-app' ] ) .
+			Html::rawElement( 'noscript', [], Html::noticeBox( wfMessage( 'rules-noscript-message' )->text(), [] ) );
 	}
 }

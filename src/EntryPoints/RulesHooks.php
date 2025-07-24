@@ -5,12 +5,15 @@ declare( strict_types = 1 );
 namespace ProfessionalWiki\Rules\EntryPoints;
 
 use MediaWiki\CommentStore\CommentStoreComment;
+use MediaWiki\Html\Html;
+use MediaWiki\Output\OutputPage;
+use MediaWiki\Page\Hook\ShowMissingArticleHook;
 use MediaWiki\Revision\Hook\ContentHandlerDefaultModelForHook;
 use MediaWiki\Revision\SlotRecord;
-use MediaWiki\Installer\Hook\LoadExtensionSchemaUpdatesHook;
+use MediaWiki\Title\Title;
 use ProfessionalWiki\Rules\RulesExtension;
 
-class RulesHooks implements ContentHandlerDefaultModelForHook, LoadExtensionSchemaUpdatesHook {
+class RulesHooks implements ContentHandlerDefaultModelForHook, ShowMissingArticleHook {
 
 	public function onContentHandlerDefaultModelFor( $title, &$model ): void {
 		if ( RulesExtension::getInstance()->isRulesPage( $title ) ) {
@@ -18,18 +21,29 @@ class RulesHooks implements ContentHandlerDefaultModelForHook, LoadExtensionSche
 		}
 	}
 
-	public function onLoadExtensionSchemaUpdates( $updater ): void {
+	public function onShowMissingArticle( $article ): void {
 		$rulesExtension = RulesExtension::getInstance();
-		$title = $rulesExtension->getRulesPageTitle();
+		$title = $article->getTitle();
 
-		if ( $title === null || $title->exists() ) {
+		if ( !$rulesExtension->isRulesPage( $title ) ) {
 			return;
 		}
 
-		$pageUpdater = $rulesExtension->getRulesPageUpdater( $title );
+		// Fill the rules page with the default content
+		$this->createRulesPage( $rulesExtension, $title );
+		// Render a message to prompt the user to refresh the page
+		// Because the fillParserOutput method is not called when the page is first created
+		$this->renderRefreshMessage( $article->getContext()->getOutput() );
+	}
 
-		$pageUpdater->setContent( SlotRecord::MAIN, new RulesContent( RulesExtension::RULES_DEFAULT_CONFIG ) );
+	private function createRulesPage( RulesExtension $rulesExtension, Title $title ): void {
+		$pageUpdater = $rulesExtension->getRulesPageUpdater( $title );
+		$pageUpdater->setContent( SlotRecord::MAIN, new RulesContent() );
 		$pageUpdater->saveRevision( CommentStoreComment::newUnsavedComment( $rulesExtension->getEditCommentForRulesPageInit() ) );
+	}
+
+	private function renderRefreshMessage( OutputPage $output ): void {
+		$output->addHTML( Html::noticeBox( $output->msg( 'rules-refresh-message' )->text(), [] ) );
 	}
 
 }
