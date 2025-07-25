@@ -5,6 +5,8 @@ declare( strict_types = 1 );
 namespace ProfessionalWiki\Rules\Maintenance;
 
 use Maintenance;
+use MediaWiki\MediaWikiServices;
+use MediaWiki\Page\PageRecord;
 
 $basePath = getenv( 'MW_INSTALL_PATH' ) !== false ? getenv( 'MW_INSTALL_PATH' ) : __DIR__ . '/../../..';
 require_once $basePath . '/maintenance/Maintenance.php';
@@ -19,7 +21,21 @@ class ApplyRules extends Maintenance {
 	}
 
 	public function execute() {
-		// TODO: Implement execute() method.
+		$services = MediaWikiServices::getInstance();
+		$wikiPageFactory = $services->getWikiPageFactory();
+		$pageRecords = $services->getPageStore()->newSelectQueryBuilder()->fetchPageRecords();
+
+		foreach ( $pageRecords as $pageRecord ) {
+			/** @var PageRecord $pageRecord */
+			$page = $wikiPageFactory->newFromTitle( $pageRecord );
+			$titleText = $page->getTitle()->getPrefixedText();
+
+			if ( $page->doPurge() ) {
+				$this->output( "Purged {$titleText}\n" );
+			} else {
+				$this->error( "Purge failed for {$titleText}" );
+			}
+		}
 	}
 
 }
