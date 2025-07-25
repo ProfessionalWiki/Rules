@@ -92,6 +92,11 @@
 				"rules-notification-updated-rule",
 				"rules-notification-deleted-rule"
 			]
+		},
+		"ext.rules.styles": {
+			"styles": [
+				"ext.rules.styles/ext.rules.styles.less"
+			]
 		}
 	},
 	"AutoloadNamespaces": {
@@ -107,7 +112,6 @@
 		}
 	},
 	"Hooks": {
-		"BeforePageDisplay": "rules",
 		"ContentAlterParserOutput": "rules",
 		"ContentHandlerDefaultModelFor": "rules",
 		"ShowMissingArticle": "rules"
@@ -116,9 +120,6 @@
 		"rules": {
 			"class": "ProfessionalWiki\\Rules\\EntryPoints\\RulesHooks"
 		}
-	},
-	"ContentHandlers": {
-		"rules": "ProfessionalWiki\\Rules\\EntryPoints\\RulesContentHandler"
 	},
 	"type": "other"
 }

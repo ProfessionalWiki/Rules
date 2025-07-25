@@ -10,7 +10,6 @@
 	"rules-message": "{{name}}\nThe name of the extension",
 	"rules-description": "{{Desc|name=Rules|url=https://github.com/ProfessionalWiki/Rules}}",
 	"rules-noscript-message": "The message to display to the user when JavaScript is disabled",
-	"rules-refresh-message": "The message to display to the user when the page is first created",
 	"rules-table-caption": "The caption of the rules table",
 	"rules-table-column-name": "The name of the column in the rules table",
 	"rules-table-column-conditions": "The conditions of the column in the rules table",
