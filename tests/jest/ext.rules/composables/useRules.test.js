@@ -42,4 +42,54 @@ describe( 'useRules', () => {
 			initialRules[ 2 ]
 		] );
 	} );
+
+	describe( 'saveRules', () => {
+		it( 'saves rules successfully and resets saving state', async () => {
+			const initialRules = createRules();
+			const { rules, saveRules, saving } = useRules( initialRules );
+			const title = 'My Test Rules';
+			const mockApi = {
+				postWithToken: jest.fn().mockResolvedValue( { edit: { result: 'Success' } } )
+			};
+
+			expect( saving.value ).toBe( false );
+
+			const promise = saveRules( mockApi, title );
+
+			expect( saving.value ).toBe( true );
+
+			const result = await promise;
+
+			expect( result ).toEqual( { edit: { result: 'Success' } } );
+			expect( mockApi.postWithToken ).toHaveBeenCalledWith(
+				'csrf',
+				{
+					action: 'edit',
+					title,
+					text: JSON.stringify( { rules: rules.value } )
+				}
+			);
+			expect( saving.value ).toBe( false );
+		} );
+
+		it( 'handles API errors and resets saving state', async () => {
+			const initialRules = createRules();
+			const { saveRules, saving } = useRules( initialRules );
+			const title = 'My Test Rules';
+			const error = new Error( 'API Failure' );
+			const mockApi = {
+				postWithToken: jest.fn().mockRejectedValue( error )
+			};
+
+			expect( saving.value ).toBe( false );
+
+			const promise = saveRules( mockApi, title );
+
+			expect( saving.value ).toBe( true );
+
+			await expect( promise ).rejects.toThrow( 'API Failure' );
+
+			expect( saving.value ).toBe( false );
+		} );
+	} );
 } );

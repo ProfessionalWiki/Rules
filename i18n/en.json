@@ -7,9 +7,9 @@
 			"Alistair3149"
 		]
 	},
-	"rules": "This page is used by Extension:Rules.",
 	"rules-message": "Rules",
 	"rules-description": "TODO",
+	"rules-noscript-message": "Please enable JavaScript to see the Rules interface.",
 	"rules-table-caption": "Rules",
 	"rules-table-column-name": "Name",
 	"rules-table-column-conditions": "Conditions",
@@ -32,5 +32,6 @@
 	"rules-table-action-add-category": "Add to category: $1",
 	"rules-notification-added-rule": "Added rule",
 	"rules-notification-updated-rule": "Updated rule",
-	"rules-notification-deleted-rule": "Deleted rule"
+	"rules-notification-deleted-rule": "Deleted rule",
+	"rules-bot-comment-init": "Initialize rules page"
 }

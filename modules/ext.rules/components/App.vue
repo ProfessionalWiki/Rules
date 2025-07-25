@@ -14,10 +14,15 @@
 </template>
 
 <script>
-const { defineComponent, ref } = require( 'vue' );
+const { defineComponent, ref, watch } = require( 'vue' );
 const EditRule = require( './EditRule.vue' );
 const RulesTable = require( './RulesTable.vue' );
 const { useRules } = require( '../composables/useRules.js' );
+const { getInitialRules } = require( '../utils/rulePage.js' );
+
+/**
+ * @typedef {import('../types.js').Rule} Rule
+ */
 
 module.exports = defineComponent( {
 	name: 'App',
@@ -27,9 +32,12 @@ module.exports = defineComponent( {
 	},
 	setup() {
 		const isFormVisible = ref( false );
-		const { rules, addRule, updateRule, deleteRule } = useRules();
-		/** @type {import('vue').Ref<import('../types.js').Rule | null>} */
+		/** @type {import('vue').Ref<Rule | null>} */
 		const ruleToEdit = ref( null );
+		const { rules, addRule, updateRule, deleteRule, saveRules } = useRules( getInitialRules() );
+
+		const api = new mw.Api();
+		const title = mw.config.get( 'wgPageName' );
 
 		function onAddRule() {
 			ruleToEdit.value = null;
@@ -37,7 +45,7 @@ module.exports = defineComponent( {
 		}
 
 		/**
-		 * @param {import('../types.js').Rule} rule
+		 * @param {Rule} rule
 		 */
 		function onEditRule( rule ) {
 			ruleToEdit.value = rule;
@@ -45,7 +53,7 @@ module.exports = defineComponent( {
 		}
 
 		/**
-		 * @param {import('../types.js').Rule} rule
+		 * @param {Rule} rule
 		 */
 		function onDeleteRule( rule ) {
 			const deletedRule = deleteRule( rule );
@@ -58,7 +66,7 @@ module.exports = defineComponent( {
 		}
 
 		/**
-		 * @param {import('../types.js').Rule} rule
+		 * @param {Rule} rule
 		 */
 		function onSaveRule( rule ) {
 			const ruleBeingEdited = ruleToEdit.value;
@@ -79,6 +87,8 @@ module.exports = defineComponent( {
 			}
 		}
 
+		watch( rules, () => saveRules( api, title ), { deep: true } );
+
 		return {
 			rules,
 			isFormVisible,
@@ -91,15 +101,3 @@ module.exports = defineComponent( {
 	}
 } );
 </script>
-
-<style lang="less">
-/**
- * Hide the clear your cache message and JSON code block in default MediaWiki JSON pages.
- * This is put here to ensure that they are only hidden when the Vue app is mounted.
- */
-/* stylelint-disable-next-line selector-max-id */
-#mw-clearyourcache,
-.mw-json {
-	display: none;
-}
-</style>

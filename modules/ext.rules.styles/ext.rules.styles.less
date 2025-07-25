@@ -1,0 +1,16 @@
+/**
+ * Hide the clear your cache message in default MediaWiki JSON pages.
+ * Since the message is not saved in ParserOutput, we need to hide it here.
+ */
+/* stylelint-disable-next-line selector-max-id */
+#mw-clearyourcache {
+	display: none;
+}
+
+/**
+ * Hide the no article text when MediaWiki:Rules is empty.
+ */
+/* stylelint-disable-next-line selector-class-pattern */
+.noarticletext {
+	display: none;
+}

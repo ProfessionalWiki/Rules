@@ -43,6 +43,7 @@
 				"ext.rules/components/RuleConditions.vue",
 				"ext.rules/components/RulesTable.vue",
 				"ext.rules/composables/useRules.js",
+				"ext.rules/utils/rulePage.js",
 				"ext.rules/utils/ruleTransformers.js",
 				{
 					"name": "ext.rules/icons.json",
@@ -91,6 +92,11 @@
 				"rules-notification-updated-rule",
 				"rules-notification-deleted-rule"
 			]
+		},
+		"ext.rules.styles": {
+			"styles": [
+				"ext.rules.styles/ext.rules.styles.less"
+			]
 		}
 	},
 	"AutoloadNamespaces": {
@@ -102,23 +108,17 @@
 	},
 	"SpecialPages": {
 		"Rules": {
-			"class": "ProfessionalWiki\\Rules\\EntryPoints\\SpecialRules",
-			"services": [
-				"TitleFactory"
-			]
+			"class": "ProfessionalWiki\\Rules\\EntryPoints\\SpecialRules"
 		}
 	},
 	"Hooks": {
-		"BeforePageDisplay": "rules",
+		"ContentAlterParserOutput": "rules",
 		"ContentHandlerDefaultModelFor": "rules",
-		"ContentAlterParserOutput": "rules"
+		"ShowMissingArticle": "rules"
 	},
 	"HookHandlers": {
 		"rules": {
-			"class": "ProfessionalWiki\\Rules\\EntryPoints\\RulesHooks",
-			"services": [
-				"TitleFactory"
-			]
+			"class": "ProfessionalWiki\\Rules\\EntryPoints\\RulesHooks"
 		}
 	},
 	"type": "other"

@@ -2,13 +2,13 @@
 	<cdx-table
 		v-model:sort="sort"
 		:caption="$i18n( 'rules-table-caption' ).text()"
-		:columns="columns"
+		:columns="tableData.length ? columns : []"
 		:data="tableData"
 		:use-row-headers="true"
 		@update:sort="onSort"
 	>
 		<template #header>
-			<cdx-button @click="$emit( 'add-rule' )">
+			<cdx-button v-if="canEdit" @click="$emit( 'add-rule' )">
 				<cdx-icon :icon="cdxIconAdd"></cdx-icon>
 				{{ $i18n( 'rules-table-add-rule' ).text() }}
 			</cdx-button>
@@ -18,7 +18,7 @@
 			{{ $i18n( 'rules-table-empty-state' ).text() }}
 		</template>
 
-		<template #item-more="{ row }">
+		<template v-if="canEdit" #item-more="{ row }">
 			<cdx-menu-button
 				v-model:selected="selection"
 				:menu-items="menuItems"
@@ -35,6 +35,7 @@
 const { defineComponent, ref, computed } = require( 'vue' );
 const { CdxButton, CdxIcon, CdxMenuButton, CdxTable } = require( '../../codex.js' );
 const { cdxIconAdd, cdxIconEdit, cdxIconEllipsis, cdxIconTrash } = require( '../icons.json' );
+const { isPageEditable } = require( '../utils/rulePage.js' );
 const { ruleToTableRow } = require( '../utils/ruleTransformers.js' );
 
 /** @type {import( '@wikimedia/codex' ).MenuItemData[]} */
@@ -70,6 +71,7 @@ module.exports = defineComponent( {
 	},
 	emits: [ 'add-rule', 'edit-rule', 'delete-rule' ],
 	setup( props, { emit } ) {
+		const canEdit = isPageEditable();
 		const selection = ref( null );
 		const sort = ref( { name: 'none' } );
 
@@ -129,6 +131,7 @@ module.exports = defineComponent( {
 		}
 
 		return {
+			canEdit,
 			sort,
 			selection,
 			columns,

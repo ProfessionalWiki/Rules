@@ -4,50 +4,45 @@ declare( strict_types = 1 );
 
 namespace ProfessionalWiki\Rules\EntryPoints;
 
+use MediaWiki\Content\JsonContent;
 use MediaWiki\Content\Hook\ContentAlterParserOutputHook;
-use MediaWiki\Output\Hook\BeforePageDisplayHook;
+use MediaWiki\Html\Html;
+use MediaWiki\Page\Hook\ShowMissingArticleHook;
 use MediaWiki\Revision\Hook\ContentHandlerDefaultModelForHook;
-use MediaWiki\Title\Title;
-use MediaWiki\Title\TitleFactory;
 use ProfessionalWiki\Rules\RulesExtension;
 
-class RulesHooks implements BeforePageDisplayHook, ContentHandlerDefaultModelForHook, ContentAlterParserOutputHook {
+class RulesHooks implements ContentAlterParserOutputHook, ContentHandlerDefaultModelForHook, ShowMissingArticleHook {
 
-	public function __construct(
-		private TitleFactory $titleFactory
-	) {
-	}
-
-	public function onBeforePageDisplay( $out, $skin ): void {
-		$title = $out->getTitle();
-
-		if (
-			$title === null ||
-			$out->getActionName() !== 'view' ||
-			!$this->isRulesPage( $title )
-		) {
-			return;
+	public function onContentAlterParserOutput( $content, $title, $parserOutput ) {
+		if ( !RulesExtension::getInstance()->isRulesPage( $title ) ) {
+			RulesExtension::getInstance()->newApplyRulesUseCase()->applyToPage( $parserOutput );
+		} else {
+			/** @var JsonContent $content */
+			$parserOutput->setJsConfigVar( 'rules', $content->getData() );
+			$parserOutput->setRawText( $this->getRulesPageHtml() );
+			$parserOutput->addModuleStyles( [ 'ext.rules.styles' ] );
+			$parserOutput->addModules( [ 'ext.rules' ] );
 		}
-
-		// Add entry point for the Vue app
-		$out->addHTML( '<div id="ext-rules-app"></div>' );
-
-		$out->addModules( 'ext.rules' );
 	}
 
 	public function onContentHandlerDefaultModelFor( $title, &$model ): void {
-		if ( $this->isRulesPage( $title ) ) {
+		if ( RulesExtension::getInstance()->isRulesPage( $title ) ) {
 			$model = CONTENT_MODEL_JSON;
 		}
 	}
 
-	private function isRulesPage( Title $title ): bool {
-		return $this->titleFactory->newFromText( RulesExtension::RULES_PAGE_TITLE, NS_MEDIAWIKI )
-			?->equals( $title ) ?? false;
+	public function onShowMissingArticle( $article ): void {
+		if ( RulesExtension::getInstance()->isRulesPage( $article->getTitle() ) ) {
+			$output = $article->getContext()->getOutput();
+			$output->addHtml( $this->getRulesPageHtml() );
+			$output->addModuleStyles( [ 'ext.rules.styles' ] );
+			$output->addModules( [ 'ext.rules' ] );
+		}
 	}
 
-	public function onContentAlterParserOutput( $content, $title, $parserOutput ) {
-		RulesExtension::getInstance()->newApplyRulesUseCase()->applyToPage( $parserOutput );
+	private function getRulesPageHtml(): string {
+		return Html::element( 'div', [ 'id' => 'ext-rules-app' ] ) .
+			Html::rawElement( 'noscript', [], Html::noticeBox( wfMessage( 'rules-noscript-message' )->text(), '' ) );
 	}
 
 }

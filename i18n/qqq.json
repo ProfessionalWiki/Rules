@@ -7,9 +7,9 @@
 			"Alistair3149"
 		]
 	},
-	"rules": "Helper message on the MediaWiki:Rules page",
 	"rules-message": "{{name}}\nThe name of the extension",
 	"rules-description": "{{Desc|name=Rules|url=https://github.com/ProfessionalWiki/Rules}}",
+	"rules-noscript-message": "The message to display to the user when JavaScript is disabled",
 	"rules-table-caption": "The caption of the rules table",
 	"rules-table-column-name": "The name of the column in the rules table",
 	"rules-table-column-conditions": "The conditions of the column in the rules table",
@@ -32,5 +32,6 @@
 	"rules-table-action-add-category": "The label of the action for the add category",
 	"rules-notification-added-rule": "The title of the notification for the added rule",
 	"rules-notification-updated-rule": "The title of the notification for the updated rule",
-	"rules-notification-deleted-rule": "The title of the notification for the deleted rule"
+	"rules-notification-deleted-rule": "The title of the notification for the deleted rule",
+	"rules-bot-comment-init": "The edit comment for the Rules Bot to initialize the MediaWiki:Rules page"
 }

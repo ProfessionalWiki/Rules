@@ -5,6 +5,7 @@ declare( strict_types = 1 );
 namespace ProfessionalWiki\Rules;
 
 use MediaWiki\MediaWikiServices;
+use MediaWiki\Title\Title;
 use ProfessionalWiki\Rules\Application\ApplyRulesUseCase;
 use ProfessionalWiki\Rules\Application\RuleListLookup;
 use ProfessionalWiki\Rules\Persistence\PageRuleListLookup;
@@ -19,6 +20,15 @@ class RulesExtension {
 		static $instance = null;
 		$instance ??= new self();
 		return $instance;
+	}
+
+	public function isRulesPage( Title $title ): bool {
+		return $this->getRulesPageTitle()?->equals( $title ) ?? false;
+	}
+
+	public function getRulesPageTitle(): ?Title {
+		return MediaWikiServices::getInstance()->getTitleFactory()
+			->newFromText( self::RULES_PAGE_TITLE, NS_MEDIAWIKI );
 	}
 
 	public function newApplyRulesUseCase(): ApplyRulesUseCase {

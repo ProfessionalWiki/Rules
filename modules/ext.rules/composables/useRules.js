@@ -1,80 +1,31 @@
 const { ref } = require( 'vue' );
-const { RuleActionType, RuleConditionType } = require( '../types.js' );
 
 /** @typedef {import('../types.js').Rule} Rule */
 
 /**
  * @typedef {object} RulesComposable
+ * @property {import('vue').Ref<boolean>} saving
  * @property {import('vue').Ref<Rule[]>} rules
  * @property {( rule: Rule ) => Rule} addRule
  * @property {( originalRule: Rule, updatedRule: Rule ) => Rule | null} updateRule
  * @property {( rule: Rule ) => Rule | null} deleteRule
+ * @property {( api: MwApi, title: string ) => Promise<any>} saveRules
  */
-
-/** @type {Rule[]} */
-const placeholderRules = [
-	{
-		name: 'Shorthair cats',
-		conditions: [
-			{
-				type: RuleConditionType.IN_CATEGORY,
-				categories: [ 'Siamese', 'British Shorthair', 'Abyssinian', 'Burmese' ]
-			}
-		],
-		actions: [
-			{
-				type: RuleActionType.ADD_CATEGORY,
-				category: 'Shorthair cats'
-			}
-		]
-	},
-	{
-		name: 'Mediumhair cats',
-		conditions: [
-			{
-				type: RuleConditionType.IN_CATEGORY,
-				categories: [ 'American Bobtail', 'Birman', 'Ragdoll', 'Siberian' ]
-			}
-		],
-		actions: [
-			{
-				type: RuleActionType.ADD_CATEGORY,
-				category: 'Mediumhair cats'
-			}
-		]
-	},
-	{
-		name: 'Longhair cats',
-		conditions: [
-			{
-				type: RuleConditionType.IN_CATEGORY,
-				categories: [ 'Persian', 'Maine Coon', 'Norwegian Forest Cat', 'Himalayan' ]
-			}
-		],
-		actions: [
-			{
-				type: RuleActionType.ADD_CATEGORY,
-				category: 'Longhair cats'
-			}
-		]
-	}
-];
 
 /**
  * @param {Rule[]} [initialRules]
  * @return {RulesComposable}
  */
-function useRules( initialRules ) {
-	// TODO: Refactor the rules injection when the API is ready
+function useRules( initialRules = [] ) {
+	const saving = ref( false );
 	/** @type {import('vue').Ref<Rule[]>} */
-	const rules = ref( [ ...( initialRules || placeholderRules ) ] );
+	const rules = ref( [ ...initialRules ] );
 
 	/**
 	 * @param {Rule} rule
 	 * @return {Rule}
 	 */
 	function addRule( rule ) {
-		// TODO: Save to API
 		rules.value.push( rule );
 		return rule;
 	}
@@ -85,7 +36,6 @@ function useRules( initialRules ) {
 	 * @return {Rule | null}
 	 */
 	function updateRule( originalRule, updatedRule ) {
-		// TODO: Save to API
 		const ruleIndex = rules.value.findIndex( ( r ) => r.name === originalRule.name );
 
 		if ( ruleIndex !== -1 ) {
@@ -101,7 +51,6 @@ function useRules( initialRules ) {
 	 * @return {Rule | null}
 	 */
 	function deleteRule( rule ) {
-		// TODO: Delete from API
 		const ruleIndex = rules.value.findIndex( ( r ) => r.name === rule.name );
 
 		if ( ruleIndex === -1 ) {
@@ -112,11 +61,32 @@ function useRules( initialRules ) {
 		return rule;
 	}
 
+	/**
+	 * @param {MwApi} api
+	 * @param {string} title
+	 * @return {Promise<any>}
+	 */
+	async function saveRules( api, title ) {
+		saving.value = true;
+		try {
+			const content = JSON.stringify( { rules: rules.value } );
+			return await api.postWithToken( 'csrf', {
+				action: 'edit',
+				title,
+				text: content
+			} );
+		} finally {
+			saving.value = false;
+		}
+	}
+
 	return {
+		saving,
 		rules,
 		addRule,
 		updateRule,
-		deleteRule
+		deleteRule,
+		saveRules
 	};
 }
 
