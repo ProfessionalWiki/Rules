@@ -36,6 +36,9 @@ module.exports = defineComponent( {
 		const ruleToEdit = ref( null );
 		const { rules, addRule, updateRule, deleteRule, saveRules } = useRules( getInitialRules() );
 
+		const api = new mw.Api();
+		const title = mw.config.get( 'wgPageName' );
+
 		function onAddRule() {
 			ruleToEdit.value = null;
 			isFormVisible.value = true;
@@ -84,7 +87,7 @@ module.exports = defineComponent( {
 			}
 		}
 
-		watch( rules, saveRules, { deep: true } );
+		watch( rules, () => saveRules( api, title ), { deep: true } );
 
 		return {
 			rules,

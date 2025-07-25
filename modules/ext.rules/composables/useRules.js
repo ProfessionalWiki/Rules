@@ -9,7 +9,7 @@ const { ref } = require( 'vue' );
  * @property {( rule: Rule ) => Rule} addRule
  * @property {( originalRule: Rule, updatedRule: Rule ) => Rule | null} updateRule
  * @property {( rule: Rule ) => Rule | null} deleteRule
- * @property {() => Promise<any>} saveRules
+ * @property {( api: MwApi, title: string ) => Promise<any>} saveRules
  */
 
 /**
@@ -62,16 +62,17 @@ function useRules( initialRules = [] ) {
 	}
 
 	/**
+	 * @param {MwApi} api
+	 * @param {string} title
 	 * @return {Promise<any>}
 	 */
-	async function saveRules() {
+	async function saveRules( api, title ) {
 		saving.value = true;
 		try {
 			const content = JSON.stringify( { rules: rules.value } );
-			const api = new mw.Api();
 			return await api.postWithToken( 'csrf', {
 				action: 'edit',
-				title: mw.config.get( 'wgPageName' ),
+				title,
 				text: content
 			} );
 		} finally {
