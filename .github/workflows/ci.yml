@@ -7,18 +7,27 @@ on:
 jobs:
   test:
     name: "PHPUnit: MW ${{ matrix.mw }}, PHP ${{ matrix.php }}"
+    continue-on-error: ${{ matrix.experimental }}
 
     strategy:
       matrix:
         include:
           - mw: 'REL1_43'
             php: '8.1'
+            experimental: false
+            coverage: false
           - mw: 'REL1_43'
             php: '8.2'
-          - mw: 'master'
+            experimental: false
+            coverage: true
+          - mw: 'REL1_44'
             php: '8.3'
+            experimental: false
+            coverage: false
           - mw: 'master'
             php: '8.4'
+            experimental: true
+            coverage: false
 
     runs-on: ubuntu-latest
 
@@ -70,11 +79,11 @@ jobs:
 
       - name: Run PHPUnit
         run: php tests/phpunit/phpunit.php -c extensions/Rules/
-        if: matrix.mw != 'master'
+        if: matrix.coverage != 'true'
 
       - name: Run PHPUnit with code coverage
         run: php tests/phpunit/phpunit.php -c extensions/Rules/ --coverage-clover coverage.xml
-        if: matrix.mw == 'master'
+        if: matrix.coverage == 'true'
 
       - name: Upload code coverage
         run: bash <(curl -s https://codecov.io/bash)
