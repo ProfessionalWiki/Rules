@@ -10,6 +10,10 @@ use MediaWiki\Storage\PageUpdater;
 use MediaWiki\Title\Title;
 use MediaWiki\User\User;
 use RuntimeException;
+use ProfessionalWiki\Rules\Application\ApplyRulesUseCase;
+use ProfessionalWiki\Rules\Application\RuleListLookup;
+use ProfessionalWiki\Rules\Persistence\PageRuleListLookup;
+use ProfessionalWiki\Rules\Persistence\RulesDeserializer;
 
 class RulesExtension {
 
@@ -53,6 +57,24 @@ class RulesExtension {
 
 	public function getEditCommentForRulesPageInit(): Message {
 		return new Message( 'rules-bot-comment-init' );
+	}
+
+	public function newApplyRulesUseCase(): ApplyRulesUseCase {
+		return new ApplyRulesUseCase(
+			ruleListLookup: $this->newPageRuleListLookup()
+		);
+	}
+
+	private function newPageRuleListLookup(): RuleListLookup {
+		return new PageRuleListLookup(
+			titleFactory: MediaWikiServices::getInstance()->getTitleFactory(),
+			wikiPageFactory: MediaWikiServices::getInstance()->getWikiPageFactory(),
+			deserializer: $this->newRulesDeserializer()
+		);
+	}
+
+	private function newRulesDeserializer(): RulesDeserializer {
+		return new RulesDeserializer();
 	}
 
 }

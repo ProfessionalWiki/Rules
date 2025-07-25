@@ -95,7 +95,8 @@
 		}
 	},
 	"AutoloadNamespaces": {
-		"ProfessionalWiki\\Rules\\": "src/"
+		"ProfessionalWiki\\Rules\\": "src/",
+		"ProfessionalWiki\\Rules\\Maintenance\\": "maintenance/"
 	},
 	"TestAutoloadNamespaces": {
 		"ProfessionalWiki\\Rules\\Tests\\": "tests/phpunit/"
@@ -106,6 +107,8 @@
 		}
 	},
 	"Hooks": {
+		"BeforePageDisplay": "rules",
+		"ContentAlterParserOutput": "rules",
 		"ContentHandlerDefaultModelFor": "rules",
 		"ShowMissingArticle": "rules"
 	},
