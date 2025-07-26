@@ -12,7 +12,7 @@
 <script>
 const { defineComponent } = require( 'vue' );
 
-module.exports = defineComponent( {
+module.exports = exports = defineComponent( {
 	name: 'FormSection',
 	props: {
 		title: {

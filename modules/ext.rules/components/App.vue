@@ -1,5 +1,6 @@
 <template>
 	<edit-rule
+		v-if="canEdit"
 		v-model:open="isFormVisible"
 		:rule="ruleToEdit"
 		@save="onSaveRule"
@@ -7,6 +8,7 @@
 
 	<rules-table
 		:rules="rules"
+		:can-edit="canEdit"
 		@add-rule="onAddRule"
 		@edit-rule="onEditRule"
 		@delete-rule="onDeleteRule"
@@ -18,23 +20,37 @@ const { defineComponent, ref, watch, provide } = require( 'vue' );
 const EditRule = require( './EditRule.vue' );
 const RulesTable = require( './RulesTable.vue' );
 const { useRules } = require( '../composables/useRules.js' );
-const { getInitialRules } = require( '../utils/rulePage.js' );
 
 /**
  * @typedef {import('../types.js').Rule} Rule
  */
-
-module.exports = defineComponent( {
+module.exports = exports = defineComponent( {
 	name: 'App',
 	components: {
 		EditRule,
 		RulesTable
 	},
-	setup() {
+	props: {
+		canEdit: {
+			type: Boolean,
+			required: true,
+			default: false
+		},
+		initialRules: {
+			/** @type {Rule[]} */
+			type: Array,
+			required: true,
+			default: () => []
+		}
+	},
+	setup( props ) {
+		const { rules, addRule, updateRule, deleteRule, saveRules } = useRules(
+			props.initialRules
+		);
+
 		const isFormVisible = ref( false );
 		/** @type {import('vue').Ref<Rule | null>} */
 		const ruleToEdit = ref( null );
-		const { rules, addRule, updateRule, deleteRule, saveRules } = useRules( getInitialRules() );
 
 		const api = new mw.Api();
 		provide( 'api', api );

@@ -50,7 +50,7 @@ const RuleActions = require( './RuleActions.vue' );
 const { RuleActionType, RuleConditionType } = require( '../types.js' );
 const { formStateToRule } = require( '../utils/ruleTransformers.js' );
 
-module.exports = defineComponent( {
+module.exports = exports = defineComponent( {
 	name: 'EditRule',
 	components: {
 		CdxDialog,
