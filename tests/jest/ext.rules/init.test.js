@@ -20,6 +20,9 @@ describe( 'ext.rules/init.js', () => {
 	beforeEach( () => {
 		jest.resetModules();
 		global.mw = {
+			config: {
+				get: jest.fn()
+			},
 			log: {
 				warn: jest.fn()
 			}
