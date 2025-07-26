@@ -16,6 +16,10 @@ const mockMw = {
 	} ) ),
 	config: {
 		get: jest.fn( ( key ) => mockConfig[ key ] )
+	},
+	util: {
+		debounce: jest.fn( ( fn ) => fn ),
+		getUrl: jest.fn( ( title ) => `/wiki/${ title }` )
 	}
 };
 
