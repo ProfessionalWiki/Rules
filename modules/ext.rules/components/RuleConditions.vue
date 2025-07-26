@@ -27,7 +27,7 @@ const FormOptions = require( './FormOptions.vue' );
 const FormSection = require( './FormSection.vue' );
 const { RuleConditionType } = require( '../types.js' );
 
-module.exports = defineComponent( {
+module.exports = exports = defineComponent( {
 	name: 'RuleConditions',
 	components: {
 		FormOption,
