@@ -41,7 +41,7 @@ const { CdxButton, CdxField, CdxIcon, CdxLabel } = require( '../../codex.js' );
 const MultiTextInput = require( './MultiTextInput.vue' );
 const { cdxIconTrash } = require( '../icons.json' );
 
-module.exports = defineComponent( {
+module.exports = exports = defineComponent( {
 	name: 'FormOption',
 	components: {
 		CdxButton,

@@ -38,12 +38,6 @@ module.exports = {
 		'vue'
 	],
 
-	transform: {
-		'.*\\.(vue)$': '@vue/vue3-jest'
-	},
-
-	testEnvironment: 'jsdom',
-
 	// A map from regular expressions to module names or to arrays of module
 	// names that allow to stub out resources with a single module
 	moduleNameMapper: {
@@ -53,5 +47,20 @@ module.exports = {
 
 	setupFiles: [
 		'./tests/jest/jest.setup.js'
-	]
+	],
+
+	testEnvironment: 'jsdom',
+
+	// Fix the ReferenceError: Vue is not defined in tests
+	testEnvironmentOptions: {
+		customExportConditions: [ 'node', 'node-addons' ]
+	},
+
+	testPathIgnorePatterns: [
+		'<rootDir>/node_modules/'
+	],
+
+	transform: {
+		'^.+\\.vue$': '<rootDir>/node_modules/@vue/vue3-jest'
+	}
 };

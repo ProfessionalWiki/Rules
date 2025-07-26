@@ -29,7 +29,7 @@ const FormSection = require( './FormSection.vue' );
 const { RuleConditionType } = require( '../types.js' );
 const useSearchCategories = require( '../composables/useSearchCategories.js' );
 
-module.exports = defineComponent( {
+module.exports = exports = defineComponent( {
 	name: 'RuleConditions',
 	components: {
 		FormOption,

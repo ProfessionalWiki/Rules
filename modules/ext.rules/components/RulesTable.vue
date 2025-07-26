@@ -96,7 +96,6 @@
 const { defineComponent, ref, computed } = require( 'vue' );
 const { CdxButton, CdxIcon, CdxMenuButton, CdxTable } = require( '../../codex.js' );
 const { cdxIconAdd, cdxIconEdit, cdxIconEllipsis, cdxIconTrash } = require( '../icons.json' );
-const { isPageEditable } = require( '../utils/rulePage.js' );
 const { ruleToTableRow } = require( '../utils/ruleTransformers.js' );
 
 /** @type {import( '@wikimedia/codex' ).MenuItemData[]} */
@@ -115,7 +114,7 @@ const menuItems = [
 	}
 ];
 
-module.exports = defineComponent( {
+module.exports = exports = defineComponent( {
 	name: 'RulesTable',
 	components: {
 		CdxButton,
@@ -128,11 +127,14 @@ module.exports = defineComponent( {
 			/** @type {import('vue').PropType<import('../types.js').Rule[]>} */
 			type: Array,
 			required: true
+		},
+		canEdit: {
+			type: Boolean,
+			required: true
 		}
 	},
 	emits: [ 'add-rule', 'edit-rule', 'delete-rule' ],
 	setup( props, { emit } ) {
-		const canEdit = isPageEditable();
 		const selection = ref( null );
 		const sort = ref( { name: 'none' } );
 
@@ -192,7 +194,6 @@ module.exports = defineComponent( {
 		}
 
 		return {
-			canEdit,
 			sort,
 			selection,
 			columns,

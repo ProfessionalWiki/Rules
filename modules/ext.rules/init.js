@@ -13,7 +13,11 @@ function initApp() {
 	}
 
 	// @ts-ignore createMwApp is a MediaWiki-specific function
-	const app = Vue.createMwApp( App, {} );
+	const app = Vue.createMwApp( App, {
+		canEdit: mw.config.get( 'wgIsProbablyEditable' ) || false,
+		// eslint-disable-next-line es-x/no-optional-chaining
+		initialRules: mw.config.get( 'rules' )?.value?.rules || []
+	} );
 	app.mount( targetElement );
 }
 

@@ -17,7 +17,7 @@ const FormOption = require( './FormOption.vue' );
 const FormSection = require( './FormSection.vue' );
 const useSearchCategories = require( '../composables/useSearchCategories.js' );
 
-module.exports = defineComponent( {
+module.exports = exports = defineComponent( {
 	name: 'RuleActions',
 	components: {
 		FormOption,
