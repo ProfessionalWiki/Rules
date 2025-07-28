@@ -145,3 +145,10 @@ module.exports = defineComponent( {
 	}
 } );
 </script>
+
+<style lang="less">
+// HACK: Set to position:fixed so that the menu won't be clipped by the table container (#36)
+.cdx-table .cdx-toggle-button--toggled-on + .cdx-menu-button__menu-wrapper {
+	position: fixed;
+}
+</style>
