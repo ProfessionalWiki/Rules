@@ -26,6 +26,7 @@
 				<component
 					:is="inputComponent"
 					:model-value="modelValue"
+					v-bind="inputProps"
 					@update:model-value="$emit( 'update:modelValue', $event )"
 				>
 				</component>
@@ -57,6 +58,10 @@ module.exports = defineComponent( {
 		inputComponent: {
 			type: Object,
 			required: true
+		},
+		inputProps: {
+			type: Object,
+			default: () => ( {} )
 		},
 		isFieldset: {
 			type: Boolean,

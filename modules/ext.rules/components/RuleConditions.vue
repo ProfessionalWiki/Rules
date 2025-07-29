@@ -10,6 +10,7 @@
 				<form-option
 					v-model="item.categories"
 					:input-component="item.inputComponent"
+					:input-props="{ searchMenuItems: searchCategories }"
 					:label="$i18n( 'rules-edit-rule-condition-in-category' ).text()"
 					:show-remove="conditions.length > 1"
 					@remove="remove"
@@ -26,6 +27,7 @@ const FormOption = require( './FormOption.vue' );
 const FormOptions = require( './FormOptions.vue' );
 const FormSection = require( './FormSection.vue' );
 const { RuleConditionType } = require( '../types.js' );
+const useSearchCategories = require( '../composables/useSearchCategories.js' );
 
 module.exports = defineComponent( {
 	name: 'RuleConditions',
@@ -42,6 +44,7 @@ module.exports = defineComponent( {
 	},
 	emits: [ 'update:conditions' ],
 	setup() {
+		const { searchCategories } = useSearchCategories();
 		function createConditionItem() {
 			return {
 				type: RuleConditionType.IN_CATEGORY,
@@ -52,7 +55,8 @@ module.exports = defineComponent( {
 		}
 
 		return {
-			createConditionItem
+			createConditionItem,
+			searchCategories
 		};
 	}
 } );

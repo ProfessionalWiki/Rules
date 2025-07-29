@@ -5,6 +5,7 @@
 			:key="index"
 			v-model="action.category"
 			:input-component="action.inputComponent"
+			:input-props="{ searchMenuItems: searchCategories }"
 			:label="$i18n( 'rules-edit-rule-action-add-category' ).text()"
 		></form-option>
 	</form-section>
@@ -14,6 +15,7 @@
 const { defineComponent } = require( 'vue' );
 const FormOption = require( './FormOption.vue' );
 const FormSection = require( './FormSection.vue' );
+const useSearchCategories = require( '../composables/useSearchCategories.js' );
 
 module.exports = defineComponent( {
 	name: 'RuleActions',
@@ -26,6 +28,13 @@ module.exports = defineComponent( {
 			type: Array,
 			required: true
 		}
+	},
+	setup() {
+		const { searchCategories } = useSearchCategories();
+
+		return {
+			searchCategories
+		};
 	}
 } );
 </script>

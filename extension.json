@@ -42,7 +42,10 @@
 				"ext.rules/components/RuleActions.vue",
 				"ext.rules/components/RuleConditions.vue",
 				"ext.rules/components/RulesTable.vue",
+				"ext.rules/components/TypeaheadTextInput.vue",
 				"ext.rules/composables/useRules.js",
+				"ext.rules/composables/useSearchCategories.js",
+				"ext.rules/utils/api.js",
 				"ext.rules/utils/rulePage.js",
 				"ext.rules/utils/ruleTransformers.js",
 				{
@@ -63,9 +66,12 @@
 				"CdxField",
 				"CdxIcon",
 				"CdxLabel",
+				"CdxMenu",
 				"CdxMenuButton",
 				"CdxTable",
-				"CdxTextInput"
+				"CdxTextInput",
+				"useFloatingMenu",
+				"useGeneratedId"
 			],
 			"messages": [
 				"rules-table-caption",

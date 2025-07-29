@@ -14,7 +14,7 @@
 </template>
 
 <script>
-const { defineComponent, ref, watch } = require( 'vue' );
+const { defineComponent, ref, watch, provide } = require( 'vue' );
 const EditRule = require( './EditRule.vue' );
 const RulesTable = require( './RulesTable.vue' );
 const { useRules } = require( '../composables/useRules.js' );
@@ -37,6 +37,7 @@ module.exports = defineComponent( {
 		const { rules, addRule, updateRule, deleteRule, saveRules } = useRules( getInitialRules() );
 
 		const api = new mw.Api();
+		provide( 'api', api );
 		const title = mw.config.get( 'wgPageName' );
 
 		function onAddRule() {
