@@ -12,15 +12,20 @@ use ProfessionalWiki\Rules\Application\RuleList;
 
 class RulesDeserializer {
 
+	public function __construct(
+		private readonly RulesJsonValidator $validator
+	) {
+	}
+
 	/**
 	 * @throws JsonException|InvalidArgumentException
 	 */
 	public function deserialize( string $json ): RuleList {
-		$data = json_decode( $json, true, 512, JSON_THROW_ON_ERROR );
-
-		if ( !isset( $data['rules'] ) || !is_array( $data['rules'] ) ) {
-			throw new InvalidArgumentException( 'Invalid JSON structure: missing rules array' );
+		if ( !$this->validator->validate( $json ) ) {
+			throw new InvalidArgumentException( 'Invalid JSON: ' . implode( ', ', $this->validator->getErrors() ) );
 		}
+
+		$data = json_decode( $json, true, 512, JSON_THROW_ON_ERROR );
 
 		$rules = [];
 

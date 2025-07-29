@@ -48,7 +48,9 @@ class RulesExtension {
 	}
 
 	private function newRulesDeserializer(): RulesDeserializer {
-		return new RulesDeserializer();
+		return new RulesDeserializer(
+			$this->newRulesJsonValidator()
+		);
 	}
 
 	public function newRulesJsonValidator(): RulesJsonValidator {
