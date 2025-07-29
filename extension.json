@@ -114,7 +114,8 @@
 	"Hooks": {
 		"ContentAlterParserOutput": "rules",
 		"ContentHandlerDefaultModelFor": "rules",
-		"ShowMissingArticle": "rules"
+		"ShowMissingArticle": "rules",
+		"EditFilter": "rules"
 	},
 	"HookHandlers": {
 		"rules": {

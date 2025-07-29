@@ -15,6 +15,7 @@ class Valid {
 {
 	"rules": [
 		{
+			"name": "Valid Rule",
 			"conditions": [
 				{
 					"type": "inCategory",
@@ -23,6 +24,7 @@ class Valid {
 			],
 			"actions": [
 				{
+					"type": "addCategory",
 					"category": "ActionCategory"
 				}
 			]

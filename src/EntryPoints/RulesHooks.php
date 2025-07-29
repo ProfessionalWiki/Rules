@@ -6,12 +6,14 @@ namespace ProfessionalWiki\Rules\EntryPoints;
 
 use MediaWiki\Content\JsonContent;
 use MediaWiki\Content\Hook\ContentAlterParserOutputHook;
+use MediaWiki\Hook\EditFilterHook;
 use MediaWiki\Html\Html;
 use MediaWiki\Page\Hook\ShowMissingArticleHook;
 use MediaWiki\Revision\Hook\ContentHandlerDefaultModelForHook;
+use ProfessionalWiki\Rules\Presentation\RulesJsonErrorFormatter;
 use ProfessionalWiki\Rules\RulesExtension;
 
-class RulesHooks implements ContentAlterParserOutputHook, ContentHandlerDefaultModelForHook, ShowMissingArticleHook {
+class RulesHooks implements ContentAlterParserOutputHook, ContentHandlerDefaultModelForHook, ShowMissingArticleHook, EditFilterHook {
 
 	public function onContentAlterParserOutput( $content, $title, $parserOutput ) {
 		if ( !RulesExtension::getInstance()->isRulesPage( $title ) ) {
@@ -43,6 +45,22 @@ class RulesHooks implements ContentAlterParserOutputHook, ContentHandlerDefaultM
 	private function getRulesPageHtml(): string {
 		return Html::element( 'div', [ 'id' => 'ext-rules-app' ] ) .
 			Html::rawElement( 'noscript', [], Html::noticeBox( wfMessage( 'rules-noscript-message' )->text(), '' ) );
+	}
+
+	public function onEditFilter( $editor, $text, $section, &$error, $summary ) {
+		if ( !RulesExtension::getInstance()->isRulesPage( $editor->getTitle() ) ) {
+			return;
+		}
+
+		$validator = RulesExtension::getInstance()->newRulesJsonValidator();
+
+		if ( !$validator->validate( $text ) ) {
+			$errors = $validator->getErrors();
+			$error = Html::errorBox(
+				wfMessage( 'rules-config-invalid', count( $errors ) )->escaped() .
+				RulesJsonErrorFormatter::format( $errors )
+			);
+		}
 	}
 
 }
