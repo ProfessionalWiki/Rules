@@ -35,18 +35,6 @@ class ApplyRulesUseCaseIntegrationTest extends RulesIntegrationTest {
 		return Title::newFromText( 'Test Page' );
 	}
 
-	/**
-	 * @param string[] $categories
-	 */
-	private function assertPageHasCategories( Title $title, array $categories ): void {
-		$parserOutput = $this->getServiceContainer()->getWikiPageFactory()->newFromTitle( $title )->getParserOutput();
-
-		$this->assertSame(
-			$parserOutput === false ? [] : $parserOutput->getCategoryNames(),
-			$categories
-		);
-	}
-
 	public function testCategoryDoesNotGetAddedIfNoRuleMatchesOnPageCreation(): void {
 		$title = $this->newTestPage();
 
