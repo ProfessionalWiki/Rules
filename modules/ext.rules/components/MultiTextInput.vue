@@ -5,7 +5,16 @@
 			:key="index"
 			class="ext-rules-multi-text-input-row"
 		>
+			<typeahead-text-input
+				v-if="searchMenuItems"
+				:model-value="item"
+				:search-menu-items="searchMenuItems"
+				class="ext-rules-multi-text-input-row-input"
+				@update:model-value="updateItem( index, $event )"
+			>
+			</typeahead-text-input>
 			<cdx-text-input
+				v-else
 				:model-value="item"
 				class="ext-rules-multi-text-input-row-input"
 				@update:model-value="updateItem( index, $event )"
@@ -17,16 +26,22 @@
 <script>
 const { defineComponent, watch } = require( 'vue' );
 const { CdxTextInput } = require( '../../codex.js' );
+const TypeaheadTextInput = require( './TypeaheadTextInput.vue' );
 
 module.exports = defineComponent( {
 	name: 'MultiTextInput',
 	components: {
-		CdxTextInput
+		CdxTextInput,
+		TypeaheadTextInput
 	},
 	props: {
 		modelValue: {
 			type: Array,
 			required: true
+		},
+		searchMenuItems: {
+			type: Function,
+			default: null
 		}
 	},
 	emits: [ 'update:modelValue' ],

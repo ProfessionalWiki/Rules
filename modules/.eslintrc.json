@@ -19,7 +19,8 @@
 		"sourceType": "module"
 	},
 	"rules": {
-		"es-x/no-rest-spread-properties": "off"
+		"es-x/no-rest-spread-properties": "off",
+		"es-x/no-optional-chaining": "off"
 	},
 	"settings": {}
 }

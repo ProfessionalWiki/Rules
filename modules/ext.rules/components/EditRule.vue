@@ -44,6 +44,7 @@
 const { defineComponent, reactive, toRefs, markRaw, computed, watch } = require( 'vue' );
 const { CdxDialog, CdxField, CdxTextInput } = require( '../../codex.js' );
 const MultiTextInput = require( './MultiTextInput.vue' );
+const TypeaheadTextInput = require( './TypeaheadTextInput.vue' );
 const RuleConditions = require( './RuleConditions.vue' );
 const RuleActions = require( './RuleActions.vue' );
 const { RuleActionType, RuleConditionType } = require( '../types.js' );
@@ -97,7 +98,7 @@ module.exports = defineComponent( {
 				formState.actions = newRule.actions.map(
 					( /** @type {import('../types.js').RuleAction} */ a ) => ( {
 						...a,
-						inputComponent: markRaw( CdxTextInput )
+						inputComponent: markRaw( TypeaheadTextInput )
 					} )
 				);
 			}
@@ -118,7 +119,7 @@ module.exports = defineComponent( {
 					{
 						type: RuleActionType.ADD_CATEGORY,
 						category: '',
-						inputComponent: markRaw( CdxTextInput )
+						inputComponent: markRaw( TypeaheadTextInput )
 					}
 				]
 			};
