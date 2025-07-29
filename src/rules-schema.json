@@ -29,8 +29,7 @@
 							},
 							"required": ["type", "categories"],
 							"additionalProperties": false
-						},
-						"minItems": 1
+						}
 					},
 					"actions": {
 						"type": "array",
@@ -45,16 +44,16 @@
 									"type": "string"
 								}
 							},
-							"required": ["type", "category"],
+							"required": ["type"],
 							"additionalProperties": false
-						},
-						"minItems": 1
+						}
 					}
 				},
-				"required": ["name", "conditions", "actions"],
+				"required": ["name"],
 				"additionalProperties": false
 			}
 		}
 	},
+	"required": ["rules"],
 	"additionalProperties": false
 }

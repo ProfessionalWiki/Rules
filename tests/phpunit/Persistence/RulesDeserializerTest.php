@@ -11,6 +11,7 @@ use ProfessionalWiki\Rules\Application\Condition;
 use ProfessionalWiki\Rules\Application\Rule;
 use ProfessionalWiki\Rules\Application\RuleList;
 use ProfessionalWiki\Rules\Persistence\RulesDeserializer;
+use ProfessionalWiki\Rules\RulesExtension;
 
 /**
  * @covers \ProfessionalWiki\Rules\Persistence\RulesDeserializer
@@ -18,7 +19,7 @@ use ProfessionalWiki\Rules\Persistence\RulesDeserializer;
 class RulesDeserializerTest extends TestCase {
 
 	public function testDeserializeEmptyList(): void {
-		$deserializer = new RulesDeserializer();
+		$deserializer = $this->newRulesDeserializer();
 		$json = '{"rules": []}';
 
 		$result = $deserializer->deserialize( $json );
@@ -26,34 +27,40 @@ class RulesDeserializerTest extends TestCase {
 		$this->assertEquals( new RuleList( [] ), $result );
 	}
 
+	private function newRulesDeserializer(): RulesDeserializer {
+		return new RulesDeserializer(
+			RulesExtension::getInstance()->newRulesJsonValidator()
+		);
+	}
+
 	public function testDeserializeThrowsExceptionForInvalidJson(): void {
-		$deserializer = new RulesDeserializer();
+		$deserializer = $this->newRulesDeserializer();
 		$invalidJson = '{"rules": [}';
 
-		$this->expectException( JsonException::class );
+		$this->expectException( InvalidArgumentException::class );
 		$deserializer->deserialize( $invalidJson );
 	}
 
 	public function testDeserializeThrowsExceptionForMissingRulesArray(): void {
-		$deserializer = new RulesDeserializer();
+		$deserializer = $this->newRulesDeserializer();
 		$json = '{"other": "data"}';
 
 		$this->expectException( InvalidArgumentException::class );
-		$this->expectExceptionMessage( 'Invalid JSON structure: missing rules array' );
+		$this->expectExceptionMessage( 'Invalid JSON: The required properties (rules) are missing' );
 		$deserializer->deserialize( $json );
 	}
 
 	public function testDeserializeThrowsExceptionWhenRulesIsNotArray(): void {
-		$deserializer = new RulesDeserializer();
+		$deserializer = $this->newRulesDeserializer();
 		$json = '{"rules": "not an array"}';
 
 		$this->expectException( InvalidArgumentException::class );
-		$this->expectExceptionMessage( 'Invalid JSON structure: missing rules array' );
+		$this->expectExceptionMessage( 'Invalid JSON: The data (string) must match the type: array' );
 		$deserializer->deserialize( $json );
 	}
 
 	public function testDeserializeMultipleRules(): void {
-		$deserializer = new RulesDeserializer();
+		$deserializer = $this->newRulesDeserializer();
 		$json = <<<'JSON'
 {
 	"rules": [
@@ -139,7 +146,7 @@ JSON;
 
 		$this->assertEquals(
 			$expectedRuleList,
-			( new RulesDeserializer() )->deserialize( $json )
+			( $this->newRulesDeserializer() )->deserialize( $json )
 		);
 	}
 
@@ -184,7 +191,7 @@ JSON;
 
 		$this->assertEquals(
 			$expectedRuleList,
-			( new RulesDeserializer() )->deserialize( $json )
+			( $this->newRulesDeserializer() )->deserialize( $json )
 		);
 	}
 }

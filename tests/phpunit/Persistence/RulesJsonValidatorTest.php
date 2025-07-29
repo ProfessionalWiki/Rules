@@ -21,8 +21,8 @@ class RulesJsonValidatorTest extends TestCase {
 		return RulesExtension::getInstance()->newRulesJsonValidator();
 	}
 
-	public function testEmptyJsonPassesValidation(): void {
-		$this->assertTrue(
+	public function testEmptyJsonFailsValidation(): void {
+		$this->assertFalse(
 			$this->newValidator()->validate( '{}' )
 		);
 	}
@@ -58,53 +58,6 @@ class RulesJsonValidatorTest extends TestCase {
 
 		$this->assertSame(
 			[ '/rules/0' => 'The required properties (name) are missing' ],
-			$validator->getErrors()
-		);
-	}
-
-	public function testMissingConditionsFails(): void {
-		$validator = $this->newValidator();
-
-		$validator->validate( '
-	{
-		"rules": [
-			{
-				"name": "Foo",
-				"notConditions": [],
-				"actions": []
-			}
-		]
-	}
-		' );
-
-		$this->assertSame(
-			[ '/rules/0' => 'The required properties (conditions) are missing' ],
-			$validator->getErrors()
-		);
-	}
-
-	public function testEmptyConditionsFails(): void {
-		$validator = $this->newValidator();
-
-		$validator->validate( '
-	{
-		"rules": [
-			{
-				"name": "Foo",
-				"conditions": [],
-				"actions": [
-					{
-						"type": "addCategory",
-						"category": "Foo"
-					}
-				]
-			}
-		]
-	}
-		' );
-
-		$this->assertSame(
-			[ '/rules/0/conditions' => 'Array should have at least 1 items, 0 found' ],
 			$validator->getErrors()
 		);
 	}
@@ -202,58 +155,6 @@ class RulesJsonValidatorTest extends TestCase {
 		);
 	}
 
-	public function testMissingActionsFails(): void {
-		$validator = $this->newValidator();
-
-		$validator->validate( '
-    {
-        "rules": [
-            {
-                "name": "Foo",
-                "conditions": [
-                    {
-                        "type": "inCategory",
-                        "categories": [ "Foo" ]
-                    }
-                ],
-                "notActions": []
-            }
-        ]
-    }
-        ' );
-
-		$this->assertSame(
-			[ '/rules/0' => 'The required properties (actions) are missing' ],
-			$validator->getErrors()
-		);
-	}
-
-	public function testEmptyActionsFails(): void {
-		$validator = $this->newValidator();
-
-		$validator->validate( '
-    {
-        "rules": [
-            {
-                "name": "Foo",
-                "conditions": [
-                    {
-                        "type": "inCategory",
-                        "categories": [ "Foo" ]
-                    }
-                ],
-                "actions": []
-            }
-        ]
-    }
-        ' );
-
-		$this->assertSame(
-			[ '/rules/0/actions' => 'Array should have at least 1 items, 0 found' ],
-			$validator->getErrors()
-		);
-	}
-
 	public function testMissingActionTypeFails(): void {
 		$validator = $this->newValidator();
 
@@ -281,37 +182,6 @@ class RulesJsonValidatorTest extends TestCase {
 
 		$this->assertSame(
 			[ '/rules/0/actions/0' => 'The required properties (type) are missing' ],
-			$validator->getErrors()
-		);
-	}
-
-	public function testMissingActionCategoryFails(): void {
-		$validator = $this->newValidator();
-
-		$validator->validate( '
-    {
-        "rules": [
-            {
-                "name": "Foo",
-                "conditions": [
-                    {
-                        "type": "inCategory",
-                        "categories": [ "Foo" ]
-                    }
-                ],
-                "actions": [
-                    {
-                        "type": "addCategory",
-                        "notCategory": "Bar"
-                    }
-                ]
-            }
-        ]
-    }
-        ' );
-
-		$this->assertSame(
-			[ '/rules/0/actions/0' => 'The required properties (category) are missing' ],
 			$validator->getErrors()
 		);
 	}
