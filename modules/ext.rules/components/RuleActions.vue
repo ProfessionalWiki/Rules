@@ -15,7 +15,7 @@ const { defineComponent } = require( 'vue' );
 const FormOption = require( './FormOption.vue' );
 const FormSection = require( './FormSection.vue' );
 
-module.exports = defineComponent( {
+module.exports = exports = defineComponent( {
 	name: 'RuleActions',
 	components: {
 		FormOption,

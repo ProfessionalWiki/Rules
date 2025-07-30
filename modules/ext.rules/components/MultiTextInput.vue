@@ -18,7 +18,7 @@
 const { defineComponent, watch } = require( 'vue' );
 const { CdxTextInput } = require( '../../codex.js' );
 
-module.exports = defineComponent( {
+module.exports = exports = defineComponent( {
 	name: 'MultiTextInput',
 	components: {
 		CdxTextInput
