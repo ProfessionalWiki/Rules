@@ -101,6 +101,10 @@ module.exports = defineComponent( {
 						inputComponent: markRaw( TypeaheadTextInput )
 					} )
 				);
+
+				if ( formState.actions.length === 0 ) {
+					formState.actions = createDefaultFormState().actions;
+				}
 			}
 		}, { immediate: true } );
 
