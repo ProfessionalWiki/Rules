@@ -52,7 +52,10 @@ describe( 'formStateToRule', () => {
 describe( 'ruleToTableRow', () => {
 	beforeEach( () => {
 		global.mw = {
-			msg: ( key, ...params ) => `${ key }${ params.length > 0 ? `: ${ params.join( ', ' ) }` : '' }`
+			msg: ( key ) => key,
+			util: {
+				getUrl: ( title ) => `/w/index.php?title=${ title }`
+			}
 		};
 	} );
 
@@ -77,8 +80,20 @@ describe( 'ruleToTableRow', () => {
 		/** @type {TableRow} */
 		const expectedTableRow = {
 			name: testRuleName,
-			conditions: `rules-table-condition-in-category: ${ testConditionCategories.join( ', ' ) }`,
-			actions: `rules-table-action-add-category: ${ testActionCategory }`
+			conditions: [ {
+				label: 'rules-table-condition-in-category',
+				links: [
+					{ label: 'Category 1', href: '/w/index.php?title=Category:Category 1' },
+					{ label: 'Category 2', href: '/w/index.php?title=Category:Category 2' }
+				]
+			} ],
+			actions: [ {
+				label: 'rules-table-action-add-category',
+				links: [ {
+					label: 'Category 3',
+					href: '/w/index.php?title=Category:Category 3'
+				} ]
+			} ]
 		};
 
 		const tableRow = ruleToTableRow( rule );

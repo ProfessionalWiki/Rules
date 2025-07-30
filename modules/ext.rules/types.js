@@ -62,6 +62,18 @@ const RuleConditionType = Object.freeze( {
  * @property {FormAction[]} actions
  */
 
+/**
+ * @typedef {Object} RuleTableCell
+ * @property {string} label The label of the cell.
+ * @property {RuleTableLink[]} links The links to display in the cell.
+ */
+
+/**
+ * @typedef {Object} RuleTableLink
+ * @property {string} label The label of the link.
+ * @property {string} href The href of the link.
+ */
+
 module.exports = {
 	RuleActionType,
 	RuleConditionType
