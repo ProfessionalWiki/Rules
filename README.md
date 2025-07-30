@@ -8,6 +8,16 @@
 
 TODO
 
+- [Introduction to the extension](https://professional.wiki/en/extension/rules#Overview)
+- [Usage documentation](https://professional.wiki/en/extension/rules#Usage)
+- [Installation](https://professional.wiki/en/extension/rules#Installation)
+- [Configuration](https://professional.wiki/en/extension/rules#Configuration)
+- [Development](#development)
+- [Release notes](#release-notes)
+
+Get professional support for this extension via [Professional Wiki], its creators and maintainers.
+We provide [MediaWiki Development], [MediaWiki Hosting], and [MediaWiki Consulting] services.
+
 ## Development
 
 Run `composer install` in `extensions/Rules/` to make the code quality tools available.
