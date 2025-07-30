@@ -8,8 +8,10 @@ use MediaWiki\MediaWikiServices;
 use MediaWiki\Title\Title;
 use ProfessionalWiki\Rules\Application\ApplyRulesUseCase;
 use ProfessionalWiki\Rules\Application\RuleListLookup;
+use ProfessionalWiki\Rules\Persistence\RulesJsonValidator;
 use ProfessionalWiki\Rules\Persistence\PageRuleListLookup;
 use ProfessionalWiki\Rules\Persistence\RulesDeserializer;
+use RuntimeException;
 
 class RulesExtension {
 
@@ -46,7 +48,25 @@ class RulesExtension {
 	}
 
 	private function newRulesDeserializer(): RulesDeserializer {
-		return new RulesDeserializer();
+		return new RulesDeserializer(
+			$this->newRulesJsonValidator()
+		);
+	}
+
+	public function newRulesJsonValidator(): RulesJsonValidator {
+		$json = file_get_contents( __DIR__ . '/rules-schema.json' );
+
+		if ( !is_string( $json ) ) {
+			throw new RuntimeException( 'Could not obtain JSON Schema' );
+		}
+
+		$schema = json_decode( $json );
+
+		if ( !is_object( $schema ) ) {
+			throw new RuntimeException( 'Failed to deserialize JSON Schema' );
+		}
+
+		return new RulesJsonValidator( $schema );
 	}
 
 }

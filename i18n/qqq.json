@@ -32,5 +32,6 @@
 	"rules-table-action-add-category": "The label of the action for the add category",
 	"rules-notification-added-rule": "The title of the notification for the added rule",
 	"rules-notification-updated-rule": "The title of the notification for the updated rule",
-	"rules-notification-deleted-rule": "The title of the notification for the deleted rule"
+	"rules-notification-deleted-rule": "The title of the notification for the deleted rule",
+	"rules-config-invalid": "Error message shown when attempting to save invalid configuration on MediaWiki:Rules\n\nParameter: \n* $1 - Listing of the error(s)"
 }
