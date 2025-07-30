@@ -79,15 +79,15 @@ jobs:
 
       - name: Run PHPUnit
         run: php tests/phpunit/phpunit.php -c extensions/Rules/
-        if: matrix.coverage != 'true'
+        if: ${{ ! matrix.coverage }}
 
       - name: Run PHPUnit with code coverage
         run: php tests/phpunit/phpunit.php -c extensions/Rules/ --coverage-clover coverage.xml
-        if: matrix.coverage == 'true'
+        if: ${{ matrix.coverage }}
 
       - name: Upload code coverage
         run: bash <(curl -s https://codecov.io/bash)
-        if: matrix.mw == 'master'
+        if: ${{ matrix.coverage }}
 
   PHPStan:
     name: "PHPStan: MW ${{ matrix.mw }}, PHP ${{ matrix.php }}"
