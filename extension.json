@@ -28,7 +28,10 @@
 		"ext.rules": {
 			"class": "MediaWiki\\ResourceLoader\\CodexModule",
 			"dependencies": [
-				"vue"
+				"vue",
+				"mediawiki.api",
+				"mediawiki.notification",
+				"mediawiki.util"
 			],
 			"packageFiles": [
 				"ext.rules/init.js",

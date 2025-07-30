@@ -52,18 +52,44 @@ function formStateToRule( formState ) {
  * @return {import( '@wikimedia/codex' ).TableRow}
  */
 function ruleToTableRow( rule ) {
-	const andText = mw.msg( 'rules-operator-and' );
-
-	// TODO: Add links to the categories and bold the type and operator
-	// TODO: Do not hardcode the message keys
 	return {
 		name: rule.name,
-		conditions: rule.conditions.map( ( c ) => mw.msg( 'rules-table-condition-in-category', c.categories.join( ', ' ) ) ).join( ` ${ andText } ` ),
-		actions: rule.actions.map( ( a ) => mw.msg( 'rules-table-action-add-category', a.category ) ).join( ` ${ andText } ` )
+		conditions: rule.conditions.map( formatConditionForTableRow ),
+		actions: rule.actions.map( formatActionForTableRow )
+	};
+}
+
+/**
+ * @param {import('../types.js').RuleCondition} condition
+ * @return {import('../types.js').RuleTableCell}
+ */
+function formatConditionForTableRow( condition ) {
+	// TODO: Do not hardcode the message keys
+	return {
+		label: mw.msg( 'rules-table-condition-in-category' ),
+		links: condition.categories.map( ( category ) => ( {
+			label: category,
+			href: mw.util.getUrl( `Category:${ category }` )
+		} ) )
+	};
+}
+
+/**
+ * @param {import('../types.js').RuleAction} action
+ * @return {import('../types.js').RuleTableCell}
+ */
+function formatActionForTableRow( action ) {
+	// TODO: Do not hardcode the message keys
+	return {
+		label: mw.msg( 'rules-table-action-add-category' ),
+		links: [ {
+			label: action.category,
+			href: mw.util.getUrl( `Category:${ action.category }` )
+		} ]
 	};
 }
 
 module.exports = {
 	formStateToRule,
-	ruleToTableRow
+	ruleToTableRow,
 };
