@@ -41,8 +41,7 @@
 								class="ext-rules-table-link"
 							>
 								{{ link.label }}
-							</a>
-							<span v-if="linkIndex < condition.links.length - 1">, </span>
+							</a><span v-if="linkIndex < condition.links.length - 1">,&nbsp;</span>
 						</template>
 					</span>
 				</div>
