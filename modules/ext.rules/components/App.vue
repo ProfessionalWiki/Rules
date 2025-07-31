@@ -1,4 +1,7 @@
 <template>
+	<div v-if="errorMessage" class="error-banner">
+  		{{ errorMessage }}
+	</div>
 	<edit-rule
 		v-model:open="isFormVisible"
 		:rule="ruleToEdit"
@@ -35,7 +38,7 @@ module.exports = defineComponent( {
 		/** @type {import('vue').Ref<Rule | null>} */
 		const ruleToEdit = ref( null );
 		const { rules, addRule, updateRule, deleteRule, saveRules } = useRules( getInitialRules() );
-
+		const errorMessage = ref('');
 		const api = new mw.Api();
 		provide( 'api', api );
 		const title = mw.config.get( 'wgPageName' );
@@ -87,8 +90,21 @@ module.exports = defineComponent( {
 				);
 			}
 		}
+		// Watch for changes in rules and save them to the API
+		//return an error message if saving fails
+		watch( rules, async () => {
+			errorMessage.value = '';
+			try {
+				await saveRules( api, title );
+			} catch ( error ) {
+				console.error( 'Save failed:', error );
+				errorMessage.value = 'Failed to save rules. Please try again.';
+				mw.notify( errorMessage.value, { type: 'error' } );
+			}
+		}, { deep: true } );
 
-		watch( rules, () => saveRules( api, title ), { deep: true } );
+	}
+}, { deep: true } );
 
 		return {
 			rules,
@@ -97,8 +113,36 @@ module.exports = defineComponent( {
 			onAddRule,
 			onEditRule,
 			onDeleteRule,
-			onSaveRule
+			onSaveRule,
+			errorMessage
 		};
 	}
 } );
+
 </script>
+<style scoped>
+.error-banner {
+  background-color: #ffe6e6;
+  color: #cc0000;
+  border: 1px solid #ffcccc;
+  padding: 12px 16px;
+  border-radius: 6px;
+  margin: 12px 0;
+  font-weight: 500;
+  font-family: sans-serif;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+</style>
+
