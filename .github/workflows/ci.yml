@@ -86,7 +86,9 @@ jobs:
         if: ${{ matrix.coverage }}
 
       - name: Upload code coverage
-        run: bash <(curl -s https://codecov.io/bash)
+        uses: codecov/codecov-action@v5
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
         if: ${{ matrix.coverage }}
 
   PHPStan:
