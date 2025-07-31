@@ -51,4 +51,26 @@ class RuleTest extends TestCase {
 		$this->assertSame( [ 'categoryToAdd' ], $rule->run( [ 'required2', 'required1', 'required3' ] ) );
 	}
 
+	/**
+	 * @dataProvider provideMatchingCategoriesWhenNormalized
+	 */
+	public function testConditionCategoriesAreNormalized( string $conditionCategory, string $presentCategory ): void {
+		$rule = new Rule(
+			[
+				new Condition( [ $conditionCategory ] ),
+			],
+			[ 'categoryToAdd' ]
+		);
+
+		$this->assertSame( [ 'categoryToAdd' ], $rule->run( [ $presentCategory ] ) );
+	}
+
+	public function provideMatchingCategoriesWhenNormalized(): iterable {
+		// $conditionCategory, $presentCategory
+		yield [ 'Foo Bar', 'Foo Bar' ];
+		yield [ 'Foo Bar', 'Foo_Bar' ];
+		yield [ 'Foo_Bar', 'Foo Bar' ];
+		yield [ 'Foo_Bar', 'Foo_Bar' ];
+	}
+
 }
