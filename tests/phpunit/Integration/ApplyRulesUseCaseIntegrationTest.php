@@ -119,4 +119,38 @@ class ApplyRulesUseCaseIntegrationTest extends RulesIntegrationTest {
 		);
 	}
 
+	/**
+	 * @dataProvider provideMatchingCategoryTestCases
+	 */
+	public function testCategoryGetsAddedWhenNormalizedPageCategoryMatches( string $category ): void {
+		$title = $this->newTestPage();
+
+		$this->insertPage( $title, "[[Category:$category]]" );
+
+		$this->assertPageHasCategories(
+			$title,
+			[ 'Condition Category', 'Action Category' ]
+		);
+	}
+
+	public static function provideMatchingCategoryTestCases(): \Generator {
+		yield 'space inside' => [ 'Condition Category' ];
+		yield 'starting space' => [ ' Condition Category' ];
+		yield 'ending space' => [ 'Condition Category ' ];
+		yield 'underscore inside' => [ 'Condition_Category' ];
+		yield 'starting space with underscore inside' => [ ' Condition_Category' ];
+		yield 'ending space with underscore inside' => [ 'Condition_Category ' ];
+	}
+
+	public function testCategoryDoesNotGetAddedWhenNormalizedPageCategoryDoesNotMatch(): void {
+		$title = $this->newTestPage();
+
+		$this->insertPage( $title, "[[Category:Condition category]]" );
+
+		$this->assertPageHasCategories(
+			$title,
+			[ 'Condition category' ]
+		);
+	}
+
 }

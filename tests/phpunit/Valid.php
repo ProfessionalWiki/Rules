@@ -28,6 +28,21 @@ class Valid {
 					"category": "ActionCategory"
 				}
 			]
+		},
+		{
+			"name": "Valid Rule With Spaces",
+			"conditions": [
+				{
+					"type": "inCategory",
+					"categories": [ "Condition Category" ]
+				}
+			],
+			"actions": [
+				{
+					"type": "addCategory",
+					"category": "Action Category"
+				}
+			]
 		}
 	]
 }

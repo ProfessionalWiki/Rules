@@ -5,6 +5,7 @@ declare( strict_types = 1 );
 namespace ProfessionalWiki\Rules\Tests;
 
 use MediaWiki\Title\Title;
+use MediaWiki\Title\TitleValue;
 use MediaWikiIntegrationTestCase;
 use ProfessionalWiki\Rules\RulesExtension;
 use WikiPage;
@@ -37,8 +38,14 @@ class RulesIntegrationTest extends MediaWikiIntegrationTestCase {
 	public function assertPageHasCategories( Title $title, array $categories ): void {
 		$parserOutput = $this->getServiceContainer()->getWikiPageFactory()->newFromTitle( $title )->getParserOutput();
 
+		// Normalize to "text form" to make assertions consistent.
+		$normalizedCategories = array_map(
+			fn( string $category ) => TitleValue::tryNew( NS_CATEGORY, $category )?->getText() ?? '',
+			$parserOutput === false ? [] : $parserOutput->getCategoryNames()
+		);
+
 		$this->assertSame(
-			$parserOutput === false ? [] : $parserOutput->getCategoryNames(),
+			$normalizedCategories,
 			$categories
 		);
 	}
