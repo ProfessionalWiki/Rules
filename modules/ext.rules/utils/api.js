@@ -52,7 +52,7 @@ async function searchCategories( api, query ) {
 			action: 'query',
 			list: 'allcategories',
 			acprefix: query,
-			aclimit: 10
+			aclimit: 50
 		},
 		'query.allcategories'
 	);
