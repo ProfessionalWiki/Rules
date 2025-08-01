@@ -90,8 +90,8 @@ module.exports = defineComponent( {
 				);
 			}
 		}
+
 		// Watch for changes in rules and save them to the API
-		//return an error message if saving fails
 		watch( rules, async () => {
 			errorMessage.value = '';
 			try {
@@ -103,9 +103,7 @@ module.exports = defineComponent( {
 			}
 		}, { deep: true } );
 
-	}
-}, { deep: true } );
-
+		
 		return {
 			rules,
 			isFormVisible,
@@ -118,8 +116,10 @@ module.exports = defineComponent( {
 		};
 	}
 } );
-
 </script>
+
+
+
 <style scoped>
 .error-banner {
   background-color: #ffe6e6;

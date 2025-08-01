@@ -82,7 +82,7 @@ function useRules( initialRules = [] ) {
 	} catch (error) {
 		console.error('Failed to save rules:', error);
 		saveError.value = error;
-		return null;
+		throw error;
 	} finally {
 		saving.value = false;
 	}
