@@ -5,6 +5,7 @@ const { ref } = require( 'vue' );
 /**
  * @typedef {object} RulesComposable
  * @property {import('vue').Ref<boolean>} saving
+ * @property {import('vue').Ref<string|null>} saveError
  * @property {import('vue').Ref<Rule[]>} rules
  * @property {( rule: Rule ) => Rule} addRule
  * @property {( originalRule: Rule, updatedRule: Rule ) => Rule | null} updateRule
@@ -18,6 +19,7 @@ const { ref } = require( 'vue' );
  */
 function useRules( initialRules = [] ) {
 	const saving = ref( false );
+	const saveError = ref(' ');
 	/** @type {import('vue').Ref<Rule[]>} */
 	const rules = ref( [ ...initialRules ] );
 
@@ -66,22 +68,30 @@ function useRules( initialRules = [] ) {
 	 * @param {string} title
 	 * @return {Promise<any>}
 	 */
-	async function saveRules( api, title ) {
-		saving.value = true;
-		try {
-			const content = JSON.stringify( { rules: rules.value } );
-			return await api.postWithToken( 'csrf', {
-				action: 'edit',
-				title,
-				text: content
-			} );
-		} finally {
-			saving.value = false;
-		}
+	async function saveRules(api, title) {
+	saving.value = true;
+	saveError.value = null;
+
+	try {
+		const content = JSON.stringify({ rules: rules.value });
+		return await api.postWithToken('csrf', {
+			action: 'edit',
+			title,
+			text: content
+		});
+	} catch (error) {
+		console.error('Failed to save rules:', error);
+		saveError.value = error;
+		throw error;
+	} finally {
+		saving.value = false;
 	}
+}
+
 
 	return {
 		saving,
+		saveError,
 		rules,
 		addRule,
 		updateRule,
