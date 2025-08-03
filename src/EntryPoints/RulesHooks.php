@@ -15,9 +15,14 @@ use ProfessionalWiki\Rules\RulesExtension;
 
 class RulesHooks implements ContentAlterParserOutputHook, ContentHandlerDefaultModelForHook, ShowMissingArticleHook, EditFilterHook {
 
+	public function __construct(
+		private readonly RulesExtension $rulesExtension
+	) {
+	}
+
 	public function onContentAlterParserOutput( $content, $title, $parserOutput ) {
-		if ( !RulesExtension::getInstance()->isRulesPage( $title ) ) {
-			RulesExtension::getInstance()->newApplyRulesUseCase()->applyToPage( $parserOutput );
+		if ( !$this->rulesExtension->isRulesPage( $title ) ) {
+			$this->rulesExtension->newApplyRulesUseCase()->applyToPage( $parserOutput );
 		} else {
 			/** @var JsonContent $content */
 			$parserOutput->setJsConfigVar( 'rules', $content->getData() );
@@ -28,13 +33,13 @@ class RulesHooks implements ContentAlterParserOutputHook, ContentHandlerDefaultM
 	}
 
 	public function onContentHandlerDefaultModelFor( $title, &$model ): void {
-		if ( RulesExtension::getInstance()->isRulesPage( $title ) ) {
+		if ( $this->rulesExtension->isRulesPage( $title ) ) {
 			$model = CONTENT_MODEL_JSON;
 		}
 	}
 
 	public function onShowMissingArticle( $article ): void {
-		if ( RulesExtension::getInstance()->isRulesPage( $article->getTitle() ) ) {
+		if ( $this->rulesExtension->isRulesPage( $article->getTitle() ) ) {
 			$output = $article->getContext()->getOutput();
 			$output->addHtml( $this->getRulesPageHtml() );
 			$output->addModuleStyles( [ 'ext.rules.styles' ] );
@@ -48,11 +53,11 @@ class RulesHooks implements ContentAlterParserOutputHook, ContentHandlerDefaultM
 	}
 
 	public function onEditFilter( $editor, $text, $section, &$error, $summary ) {
-		if ( !RulesExtension::getInstance()->isRulesPage( $editor->getTitle() ) ) {
+		if ( !$this->rulesExtension->isRulesPage( $editor->getTitle() ) ) {
 			return;
 		}
 
-		$validator = RulesExtension::getInstance()->newRulesJsonValidator();
+		$validator = $this->rulesExtension->newRulesJsonValidator();
 
 		if ( !$validator->validate( $text ) ) {
 			$errors = $validator->getErrors();

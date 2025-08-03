@@ -117,7 +117,10 @@
 	},
 	"SpecialPages": {
 		"Rules": {
-			"class": "ProfessionalWiki\\Rules\\EntryPoints\\SpecialRules"
+			"class": "ProfessionalWiki\\Rules\\EntryPoints\\SpecialRules",
+			"services": [
+				"Rules.RulesExtension"
+			]
 		}
 	},
 	"Hooks": {
@@ -128,8 +131,14 @@
 	},
 	"HookHandlers": {
 		"rules": {
-			"class": "ProfessionalWiki\\Rules\\EntryPoints\\RulesHooks"
+			"class": "ProfessionalWiki\\Rules\\EntryPoints\\RulesHooks",
+			"services": [
+				"Rules.RulesExtension"
+			]
 		}
 	},
+	"ServiceWiringFiles": [
+		"src/ServiceWiring.php"
+	],
 	"type": "other"
 }

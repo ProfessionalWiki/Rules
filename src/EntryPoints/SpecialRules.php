@@ -10,14 +10,16 @@ use ProfessionalWiki\Rules\RulesExtension;
 
 class SpecialRules extends SpecialPage {
 
-	public function __construct() {
+	public function __construct(
+		private readonly RulesExtension $rulesExtension
+	) {
 		parent::__construct( 'Rules' );
 	}
 
 	public function execute( $subPage ): void {
 		parent::execute( $subPage );
 
-		$title = RulesExtension::getInstance()->getRulesPageTitle();
+		$title = $this->rulesExtension->getRulesPageTitle();
 
 		if ( $title !== null ) {
 			$this->getOutput()->redirect( $title->getFullURL() );

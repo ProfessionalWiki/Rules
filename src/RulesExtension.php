@@ -4,8 +4,9 @@ declare( strict_types = 1 );
 
 namespace ProfessionalWiki\Rules;
 
-use MediaWiki\MediaWikiServices;
+use MediaWiki\Page\WikiPageFactory;
 use MediaWiki\Title\Title;
+use MediaWiki\Title\TitleFactory;
 use ProfessionalWiki\Rules\Application\ApplyRulesUseCase;
 use ProfessionalWiki\Rules\Application\RuleListLookup;
 use ProfessionalWiki\Rules\Persistence\RulesJsonValidator;
@@ -17,11 +18,10 @@ class RulesExtension {
 
 	public const RULES_PAGE_TITLE = 'Rules';
 
-	public static function getInstance(): self {
-		/** @var ?RulesExtension $instance */
-		static $instance = null;
-		$instance ??= new self();
-		return $instance;
+	public function __construct(
+		private readonly TitleFactory $titleFactory,
+		private readonly WikiPageFactory $wikiPageFactory,
+	) {
 	}
 
 	public function isRulesPage( Title $title ): bool {
@@ -29,8 +29,7 @@ class RulesExtension {
 	}
 
 	public function getRulesPageTitle(): ?Title {
-		return MediaWikiServices::getInstance()->getTitleFactory()
-			->newFromText( self::RULES_PAGE_TITLE, NS_MEDIAWIKI );
+		return $this->titleFactory->newFromText( self::RULES_PAGE_TITLE, NS_MEDIAWIKI );
 	}
 
 	public function newApplyRulesUseCase(): ApplyRulesUseCase {
@@ -41,8 +40,8 @@ class RulesExtension {
 
 	private function newPageRuleListLookup(): RuleListLookup {
 		return new PageRuleListLookup(
-			titleFactory: MediaWikiServices::getInstance()->getTitleFactory(),
-			wikiPageFactory: MediaWikiServices::getInstance()->getWikiPageFactory(),
+			titleFactory: $this->titleFactory,
+			wikiPageFactory: $this->wikiPageFactory,
 			deserializer: $this->newRulesDeserializer()
 		);
 	}

@@ -5,7 +5,8 @@ declare( strict_types = 1 );
 namespace ProfessionalWiki\Rules\Tests\Persistence;
 
 use InvalidArgumentException;
-use JsonException;
+use MediaWiki\Page\WikiPageFactory;
+use MediaWiki\Title\TitleFactory;
 use PHPUnit\Framework\TestCase;
 use ProfessionalWiki\Rules\Application\Condition;
 use ProfessionalWiki\Rules\Application\Rule;
@@ -29,7 +30,10 @@ class RulesDeserializerTest extends TestCase {
 
 	private function newRulesDeserializer(): RulesDeserializer {
 		return new RulesDeserializer(
-			RulesExtension::getInstance()->newRulesJsonValidator()
+			( new RulesExtension(
+				$this->createMock( TitleFactory::class ),
+				$this->createMock( WikiPageFactory::class )
+			) )->newRulesJsonValidator()
 		);
 	}
 
