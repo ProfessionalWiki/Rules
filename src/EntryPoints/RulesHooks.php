@@ -10,19 +10,21 @@ use MediaWiki\Hook\EditFilterHook;
 use MediaWiki\Html\Html;
 use MediaWiki\Page\Hook\ShowMissingArticleHook;
 use MediaWiki\Revision\Hook\ContentHandlerDefaultModelForHook;
+use ProfessionalWiki\Rules\Application\ApplyRulesUseCase;
 use ProfessionalWiki\Rules\Presentation\RulesJsonErrorFormatter;
 use ProfessionalWiki\Rules\RulesExtension;
 
 class RulesHooks implements ContentAlterParserOutputHook, ContentHandlerDefaultModelForHook, ShowMissingArticleHook, EditFilterHook {
 
 	public function __construct(
-		private readonly RulesExtension $rulesExtension
+		private readonly RulesExtension $rulesExtension,
+		private readonly ApplyRulesUseCase $applyRulesUseCase
 	) {
 	}
 
 	public function onContentAlterParserOutput( $content, $title, $parserOutput ) {
 		if ( !$this->rulesExtension->isRulesPage( $title ) ) {
-			$this->rulesExtension->newApplyRulesUseCase()->applyToPage( $parserOutput );
+			$this->applyRulesUseCase->applyToPage( $parserOutput );
 		} else {
 			/** @var JsonContent $content */
 			$parserOutput->setJsConfigVar( 'rules', $content->getData() );

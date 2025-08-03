@@ -4,7 +4,6 @@ declare( strict_types = 1 );
 
 namespace ProfessionalWiki\Rules\Tests\Persistence;
 
-use MediaWiki\Page\WikiPageFactory;
 use MediaWiki\Title\TitleFactory;
 use PHPUnit\Framework\TestCase;
 use ProfessionalWiki\Rules\Persistence\RulesJsonValidator;
@@ -21,8 +20,7 @@ class RulesJsonValidatorTest extends TestCase {
 
 	private function newValidator(): RulesJsonValidator {
 		return ( new RulesExtension(
-			$this->createMock( TitleFactory::class ),
-			$this->createMock( WikiPageFactory::class )
+			$this->createMock( TitleFactory::class )
 		) )->newRulesJsonValidator();
 	}
 

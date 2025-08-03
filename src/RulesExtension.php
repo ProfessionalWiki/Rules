@@ -4,13 +4,9 @@ declare( strict_types = 1 );
 
 namespace ProfessionalWiki\Rules;
 
-use MediaWiki\Page\WikiPageFactory;
 use MediaWiki\Title\Title;
 use MediaWiki\Title\TitleFactory;
-use ProfessionalWiki\Rules\Application\ApplyRulesUseCase;
-use ProfessionalWiki\Rules\Application\RuleListLookup;
 use ProfessionalWiki\Rules\Persistence\RulesJsonValidator;
-use ProfessionalWiki\Rules\Persistence\PageRuleListLookup;
 use ProfessionalWiki\Rules\Persistence\RulesDeserializer;
 use RuntimeException;
 
@@ -20,7 +16,6 @@ class RulesExtension {
 
 	public function __construct(
 		private readonly TitleFactory $titleFactory,
-		private readonly WikiPageFactory $wikiPageFactory,
 	) {
 	}
 
@@ -32,21 +27,7 @@ class RulesExtension {
 		return $this->titleFactory->newFromText( self::RULES_PAGE_TITLE, NS_MEDIAWIKI );
 	}
 
-	public function newApplyRulesUseCase(): ApplyRulesUseCase {
-		return new ApplyRulesUseCase(
-			ruleListLookup: $this->newPageRuleListLookup()
-		);
-	}
-
-	private function newPageRuleListLookup(): RuleListLookup {
-		return new PageRuleListLookup(
-			titleFactory: $this->titleFactory,
-			wikiPageFactory: $this->wikiPageFactory,
-			deserializer: $this->newRulesDeserializer()
-		);
-	}
-
-	private function newRulesDeserializer(): RulesDeserializer {
+	public function newRulesDeserializer(): RulesDeserializer {
 		return new RulesDeserializer(
 			$this->newRulesJsonValidator()
 		);

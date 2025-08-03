@@ -133,7 +133,8 @@
 		"rules": {
 			"class": "ProfessionalWiki\\Rules\\EntryPoints\\RulesHooks",
 			"services": [
-				"Rules.RulesExtension"
+				"Rules.RulesExtension",
+				"Rules.ApplyRulesUseCase"
 			]
 		}
 	},
