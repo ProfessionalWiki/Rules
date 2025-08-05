@@ -123,7 +123,8 @@
 		"ContentAlterParserOutput": "rules",
 		"ContentHandlerDefaultModelFor": "rules",
 		"ShowMissingArticle": "rules",
-		"EditFilter": "rules"
+		"EditFilter": "rules",
+		"AdminLinks": "rules"
 	},
 	"HookHandlers": {
 		"rules": {

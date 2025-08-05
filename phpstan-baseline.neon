@@ -1,1 +1,25 @@
 parameters:
+	ignoreErrors:
+		-
+			message: '#^Call to method getSection\(\) on an unknown class ALTree\.$#'
+			identifier: class.notFound
+			count: 1
+			path: src/EntryPoints/RulesHooks.php
+
+		-
+			message: '#^Call to static method newFromSpecialPage\(\) on an unknown class ALItem\.$#'
+			identifier: class.notFound
+			count: 1
+			path: src/EntryPoints/RulesHooks.php
+
+		-
+			message: '#^Instantiated class ALRow not found\.$#'
+			identifier: class.notFound
+			count: 1
+			path: src/EntryPoints/RulesHooks.php
+
+		-
+			message: '#^Parameter \$adminLinks of method ProfessionalWiki\\Rules\\EntryPoints\\RulesHooks\:\:onAdminLinks\(\) has invalid type ALTree\.$#'
+			identifier: class.notFound
+			count: 1
+			path: src/EntryPoints/RulesHooks.php
