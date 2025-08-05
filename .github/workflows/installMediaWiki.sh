@@ -22,6 +22,7 @@ $wgDevelopmentWarnings = true;
 EOT
 
 cat <<EOT >> LocalSettings.php
+wfLoadExtension( 'AdminLinks' );
 wfLoadExtension( "$EXTENSION_NAME" );
 EOT
 
@@ -37,3 +38,6 @@ cat <<EOT >> composer.local.json
 	}
 }
 EOT
+
+cd extensions
+git clone https://gerrit.wikimedia.org/r/mediawiki/extensions/AdminLinks --depth=1  --branch=$MW_BRANCH --recurse-submodules -j8
