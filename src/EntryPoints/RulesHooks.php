@@ -4,6 +4,9 @@ declare( strict_types = 1 );
 
 namespace ProfessionalWiki\Rules\EntryPoints;
 
+use ALItem;
+use ALRow;
+use ALTree;
 use MediaWiki\Content\JsonContent;
 use MediaWiki\Content\Hook\ContentAlterParserOutputHook;
 use MediaWiki\Hook\EditFilterHook;
@@ -61,6 +64,23 @@ class RulesHooks implements ContentAlterParserOutputHook, ContentHandlerDefaultM
 				RulesJsonErrorFormatter::format( $errors )
 			);
 		}
+	}
+
+	public static function onAdminLinks( ALTree &$adminLinks ): void {
+		$generalSection = $adminLinks->getSection( wfMessage( 'adminlinks_general' )->text() );
+
+		if ( $generalSection === null ) {
+			return;
+		}
+
+		$extensionsRow = $generalSection->getRow( 'extensions' );
+
+		if ( $extensionsRow === null ) {
+			$extensionsRow = new ALRow( 'extensions' );
+			$generalSection->addRow( $extensionsRow );
+		}
+
+		$extensionsRow->addItem( ALItem::newFromSpecialPage( 'Rules' ) );
 	}
 
 }

@@ -7,7 +7,7 @@
 			"Alistair3149"
 		]
 	},
-	"rules-message": "Rules",
+	"rules-message": "Automation rules",
 	"rules-description": "Automate MediaWiki page categorization based on rules defined at [[MediaWiki:Rules]]",
 	"rules-noscript-message": "Please enable JavaScript to see the Rules interface.",
 	"rules-table-caption": "Rules",
