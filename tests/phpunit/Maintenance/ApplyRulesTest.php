@@ -20,7 +20,7 @@ class ApplyRulesTest extends RulesIntegrationTest {
 	protected function setUp(): void {
 		parent::setUp();
 
-		$this->maintenance = new ApplyRules();
+		$this->maintenance = new ApplyRules( enableOutput: false );
 		$this->maintenance->checkRequiredExtensions();
 	}
 

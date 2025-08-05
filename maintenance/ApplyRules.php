@@ -14,7 +14,9 @@ require_once $basePath . '/maintenance/Maintenance.php';
 
 class ApplyRules extends Maintenance {
 
-	public function __construct() {
+	public function __construct(
+		private readonly bool $enableOutput = true
+	) {
 		parent::__construct();
 
 		$this->requireExtension( 'Rules' );
@@ -39,12 +41,18 @@ class ApplyRules extends Maintenance {
 			$titleText = $page->getTitle()->getPrefixedText();
 			$categoryCountAfter = count( $page->getCategories() );
 
-			$this->output( "Applied rules on {$titleText} ($categoryCountBefore -> $categoryCountAfter)\n" );
+			$this->outputText( "Applied rules on {$titleText} ($categoryCountBefore -> $categoryCountAfter)\n" );
 
 			$pageCount += 1;
 		}
 
-		$this->output( "Done. Applied rules on $pageCount pages\n" );
+		$this->outputText( "Done. Applied rules on $pageCount pages\n" );
+	}
+
+	private function outputText( string $text ): void {
+		if ( $this->enableOutput ) {
+			$this->output( $text );
+		}
 	}
 
 }
