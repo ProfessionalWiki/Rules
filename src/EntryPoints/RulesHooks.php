@@ -43,7 +43,12 @@ class RulesHooks implements ContentAlterParserOutputHook, ContentHandlerDefaultM
 	}
 
 	private function getRulesPageHtml(): string {
-		return Html::element( 'div', [ 'id' => 'ext-rules-app' ] ) .
+		return
+			Html::rawElement( 'p',
+				[ 'id' => 'ext-rules-intro' ],
+				wfMessage( 'ext-rules-intro' )->exists() ? wfMessage( 'ext-rules-intro' )->parse() : ''
+			) .
+			Html::element( 'div', [ 'id' => 'ext-rules-app' ] ) .
 			Html::rawElement( 'noscript', [], Html::noticeBox( wfMessage( 'rules-noscript-message' )->text(), '' ) );
 	}
 
