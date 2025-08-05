@@ -49,7 +49,6 @@
 				"ext.rules/composables/useRules.js",
 				"ext.rules/composables/useSearchCategories.js",
 				"ext.rules/utils/api.js",
-				"ext.rules/utils/rulePage.js",
 				"ext.rules/utils/ruleTransformers.js",
 				{
 					"name": "ext.rules/icons.json",
