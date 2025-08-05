@@ -8,7 +8,7 @@
 		]
 	},
 	"rules-message": "Rules",
-	"rules-description": "TODO",
+	"rules-description": "Automate MediaWiki page categorization based on rules defined at [[MediaWiki:Rules]]",
 	"rules-noscript-message": "Please enable JavaScript to see the Rules interface.",
 	"rules-table-caption": "Rules",
 	"rules-table-column-name": "Name",
