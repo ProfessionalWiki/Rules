@@ -8,7 +8,7 @@
 
 Automate MediaWiki page categorization based on rules defined via a user-friendly configuration interface.
 
-- [Introduction to the extension](https://professional.wiki/en/extension/rules#Overview)
+- [Introduction to the extension](https://professional.wiki/en/extension/rules)
 - [Usage documentation](https://professional.wiki/en/extension/rules#Usage)
 - [Installation](https://professional.wiki/en/extension/rules#Installation)
 - [Configuration](https://professional.wiki/en/extension/rules#Configuration)
