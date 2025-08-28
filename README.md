@@ -6,7 +6,7 @@
 [![Download count](https://poser.pugx.org/professional-wiki/rules/downloads)](https://packagist.org/packages/professional-wiki/rules)
 [![License](https://poser.pugx.org/professional-wiki/rules/license)](LICENSE)
 
-TODO
+Automate MediaWiki page categorization based on rules defined via a user-friendly configuration interface.
 
 - [Introduction to the extension](https://professional.wiki/en/extension/rules#Overview)
 - [Usage documentation](https://professional.wiki/en/extension/rules#Usage)
@@ -45,7 +45,11 @@ Commands that use Docker:
 
 ### Version 1.0.0
 
-* WIP
+Released on 2025-08-28
+
+* Initial version with support for MediaWiki 1.43 and 1.44
+* Automatic categorization based on existing categories
+* Configuration UI for rules at `MediaWiki:Rules`
 
 [Professional Wiki]: https://professional.wiki
 [MediaWiki Hosting]: https://pro.wiki
