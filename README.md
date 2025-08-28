@@ -18,6 +18,8 @@ Automate MediaWiki page categorization based on rules defined via a user-friendl
 Get professional support for this extension via [Professional Wiki], its creators and maintainers.
 We provide [MediaWiki Development], [MediaWiki Hosting], and [MediaWiki Consulting] services.
 
+[![Image](https://github.com/user-attachments/assets/a8f6129a-f2e3-4af4-a2cb-a7d2806b2b8a)](https://professional.wiki/en/extension/rules)
+
 ## Development
 
 Run `composer install` in `extensions/Rules/` to make the code quality tools available.
