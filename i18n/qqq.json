@@ -1,10 +1,10 @@
 {
 	"@metadata": {
 		"authors": [
+			"Alistair3149",
 			"Jeroen De Dauw",
 			"Karsten Hoffmeyer",
-			"Morne Alberts",
-			"Alistair3149"
+			"Morne Alberts"
 		]
 	},
 	"rules-message": "{{name}}\nThe name of the extension",

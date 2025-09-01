@@ -1,0 +1,16 @@
+{
+	"@metadata": {
+		"authors": [
+			"Abijeet Patro"
+		]
+	},
+	"rules-table-caption": "नियम",
+	"rules-table-column-name": "नाम",
+	"rules-table-column-actions": "क्रियाएँ",
+	"rules-table-add-rule": "नियम जोड़ें",
+	"rules-table-delete-rule": "नियम हटाएँ",
+	"rules-edit-rule-save": "सहेजें",
+	"rules-edit-rule-name-label": "नियम का नाम",
+	"rules-edit-rule-action-label": "तब...",
+	"rules-operator-and": "और"
+}
