@@ -1,0 +1,24 @@
+{
+	"@metadata": {
+		"authors": [
+			"Volvox"
+		]
+	},
+	"rules-table-caption": "Reegelen",
+	"rules-table-column-name": "Numm",
+	"rules-table-column-conditions": "Konditiounen",
+	"rules-table-column-actions": "Aktiounen",
+	"rules-table-empty-state": "Et gëtt nach keng Reegelen.",
+	"rules-table-add-rule": "Reegel derbäisetzen",
+	"rules-table-delete-rule": "Reegel läschen",
+	"rules-table-edit-rule": "Reegel änneren",
+	"rules-table-more-actions": "Méi Aktiounen",
+	"rules-edit-rule-save": "Späicheren",
+	"rules-edit-rule-name-label": "Reegelnumm",
+	"rules-edit-rule-condition-label": "Eann eng Säit …",
+	"rules-edit-rule-condition-add": "Konditioun derbäisetzen",
+	"rules-edit-rule-action-label": "Dann …",
+	"rules-multi-text-input-remove-item": "Element ewechhuelen",
+	"rules-operator-and": "AN",
+	"rules-notification-updated-rule": "Aktualiséiert Reegel"
+}

@@ -1,0 +1,33 @@
+{
+	"@metadata": {
+		"authors": [
+			"Kly"
+		]
+	},
+	"rules-description": "根據定義在 [[MediaWiki:Rules]] 的規則來自動分類 MediaWiki 頁面",
+	"rules-noscript-message": "請啟用 JavaScript 來查看 Rules 介面。",
+	"rules-table-caption": "Rules",
+	"rules-table-column-name": "名稱",
+	"rules-table-column-conditions": "條件",
+	"rules-table-column-actions": "操作",
+	"rules-table-empty-state": "目前尚未有規則。",
+	"rules-table-add-rule": "新增規則",
+	"rules-table-delete-rule": "刪除規則",
+	"rules-table-edit-rule": "編輯規則",
+	"rules-table-more-actions": "更多操作",
+	"rules-edit-rule-save": "儲存",
+	"rules-edit-rule-name-label": "規則名稱",
+	"rules-edit-rule-condition-label": "如果有頁面…",
+	"rules-edit-rule-condition-in-category": "至少屬於這些分類之一",
+	"rules-edit-rule-condition-add": "新增條件",
+	"rules-edit-rule-action-label": "然後…",
+	"rules-edit-rule-action-add-category": "新增分類",
+	"rules-multi-text-input-remove-item": "移除項目",
+	"rules-operator-and": "而且",
+	"rules-table-condition-in-category": "在分類",
+	"rules-table-action-add-category": "新增到分類",
+	"rules-notification-added-rule": "已新增規則",
+	"rules-notification-updated-rule": "已更新規則",
+	"rules-notification-deleted-rule": "已刪除規則",
+	"rules-config-invalid": "尚未儲存您的更改。內容有以下{{PLURAL:$1|錯誤}}："
+}

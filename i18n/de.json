@@ -1,0 +1,33 @@
+{
+	"@metadata": {
+		"authors": [
+			"Kghbln"
+		]
+	},
+	"rules-description": "Automatisieren Sie die Kategorisierung von Seiten entsprechend [[MediaWiki:Rules|definierter Regeln]]",
+	"rules-noscript-message": "Bitte aktivieren Sie JavaScript, um die Benutzeroberfläche zum Definieren von Regeln nutzen zu können.",
+	"rules-table-caption": "Regeln",
+	"rules-table-column-name": "Name",
+	"rules-table-column-conditions": "Bedingungen",
+	"rules-table-column-actions": "Aktionen",
+	"rules-table-empty-state": "Es sind keine Regeln vorhanden.",
+	"rules-table-add-rule": "Regel hinzufügen",
+	"rules-table-delete-rule": "Regel löschen",
+	"rules-table-edit-rule": "Regel bearbeiten",
+	"rules-table-more-actions": "Weitere Aktionen",
+	"rules-edit-rule-save": "Speichern",
+	"rules-edit-rule-name-label": "Name der Regel",
+	"rules-edit-rule-condition-label": "Sofern eine Seite...",
+	"rules-edit-rule-condition-in-category": "befindet sich in mindestens einer dieser Kategorien",
+	"rules-edit-rule-condition-add": "Bedingung hinzufügen",
+	"rules-edit-rule-action-label": "Dann...",
+	"rules-edit-rule-action-add-category": "Einer Kategorie hinzufügen",
+	"rules-multi-text-input-remove-item": "Objekt entfernen",
+	"rules-operator-and": "UND",
+	"rules-table-condition-in-category": "In der Kategorie",
+	"rules-table-action-add-category": "Zur Kategorie hinzufügen",
+	"rules-notification-added-rule": "Hinzugefügte Regel",
+	"rules-notification-updated-rule": "Regel aktualisieren",
+	"rules-notification-deleted-rule": "Gelöschte Regel",
+	"rules-config-invalid": "Die Änderungen wurden nicht gespeichert. Sie enthalten {{PLURAL:$1|den|die}} folgenden Fehler:"
+}

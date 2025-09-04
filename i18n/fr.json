@@ -1,0 +1,33 @@
+{
+	"@metadata": {
+		"authors": [
+			"Escargot bleu"
+		]
+	},
+	"rules-description": "Automatisez la catégorisation des pages MediaWiki en fonction des règles définies dans [[MediaWiki:Rules]]",
+	"rules-noscript-message": "Veuillez activer JavaScript pour voir l'interface de l'extension Rule.",
+	"rules-table-caption": "Règles",
+	"rules-table-column-name": "Nom",
+	"rules-table-column-conditions": "Conditions",
+	"rules-table-column-actions": "Actions",
+	"rules-table-empty-state": "Il n'y a pas de règles pour le moment.",
+	"rules-table-add-rule": "Ajouter une règle",
+	"rules-table-delete-rule": "Supprimer une règle",
+	"rules-table-edit-rule": "Modifier une règle",
+	"rules-table-more-actions": "Plus d’actions",
+	"rules-edit-rule-save": "Enregistrer",
+	"rules-edit-rule-name-label": "Nom de la règle",
+	"rules-edit-rule-condition-label": "Si une page…",
+	"rules-edit-rule-condition-in-category": "appartient à au moins une de ces catégories",
+	"rules-edit-rule-condition-add": "Ajouter une condition",
+	"rules-edit-rule-action-label": "Alors…",
+	"rules-edit-rule-action-add-category": "ajouter à la catégorie",
+	"rules-multi-text-input-remove-item": "Supprimer l’élément",
+	"rules-operator-and": "ET",
+	"rules-table-condition-in-category": "Dans la catégorie",
+	"rules-table-action-add-category": "Ajouter à la catégorie",
+	"rules-notification-added-rule": "Règle ajoutée",
+	"rules-notification-updated-rule": "Règle mise à jour",
+	"rules-notification-deleted-rule": "Règle supprimée",
+	"rules-config-invalid": "Vos modifications n'ont pas enregistrées. Elles contiennent {{PLURAL:$1|l'erreur suivante|les erreurs suivantes}} :"
+}

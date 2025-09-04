@@ -1,0 +1,33 @@
+{
+	"@metadata": {
+		"authors": [
+			"McDutchie"
+		]
+	},
+	"rules-description": "Automatiseer de categorisering van MediaWiki-pagina’s op basis van in [[MediaWiki:Rules]] gedefinieerde regels",
+	"rules-noscript-message": "Schakel JavaScript in om de interface Regels te zien.",
+	"rules-table-caption": "Regels",
+	"rules-table-column-name": "Naam",
+	"rules-table-column-conditions": "Voorwaarden",
+	"rules-table-column-actions": "Handelingen",
+	"rules-table-empty-state": "Er zijn nog geen regels.",
+	"rules-table-add-rule": "Regel toevoegen",
+	"rules-table-delete-rule": "Regel verwijderen",
+	"rules-table-edit-rule": "Regel bewerken",
+	"rules-table-more-actions": "Meer handelingen",
+	"rules-edit-rule-save": "Opslaan",
+	"rules-edit-rule-name-label": "Naam van de regel",
+	"rules-edit-rule-condition-label": "Als een pagina…",
+	"rules-edit-rule-condition-in-category": "in ten minste één van deze categorieën valt",
+	"rules-edit-rule-condition-add": "Voorwaarde toevoegen",
+	"rules-edit-rule-action-label": "Dan…",
+	"rules-edit-rule-action-add-category": "toevoegen aan categorie",
+	"rules-multi-text-input-remove-item": "Item verwijderen",
+	"rules-operator-and": "EN",
+	"rules-table-condition-in-category": "In categorie",
+	"rules-table-action-add-category": "Toevoegen aan categorie",
+	"rules-notification-added-rule": "Regel toegevoegd",
+	"rules-notification-updated-rule": "Regel bijgewerkt",
+	"rules-notification-deleted-rule": "Regel verwijderd",
+	"rules-config-invalid": "Uw wijzigingen zijn niet opgeslagen. Ze bevatten de volgende fout{{PLURAL:$1||en}}:"
+}

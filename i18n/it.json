@@ -1,0 +1,29 @@
+{
+	"@metadata": {
+		"authors": [
+			"Beta16"
+		]
+	},
+	"rules-table-caption": "Regole",
+	"rules-table-column-name": "Nome",
+	"rules-table-column-conditions": "Condizioni",
+	"rules-table-column-actions": "Azioni",
+	"rules-table-empty-state": "Non ci sono ancora regole.",
+	"rules-table-add-rule": "Aggiungi regola",
+	"rules-table-delete-rule": "Cancella regola",
+	"rules-table-edit-rule": "Modifica regola",
+	"rules-table-more-actions": "Altre azioni",
+	"rules-edit-rule-save": "Salva",
+	"rules-edit-rule-name-label": "Nome regola",
+	"rules-edit-rule-condition-label": "Se una pagina...",
+	"rules-edit-rule-condition-in-category": "è contenuto in almeno una di queste categorie",
+	"rules-edit-rule-condition-add": "Aggiungi condizione",
+	"rules-edit-rule-action-add-category": "aggiungi alla categoria",
+	"rules-multi-text-input-remove-item": "Rimuovi elemento",
+	"rules-operator-and": "E",
+	"rules-table-condition-in-category": "Nella categoria",
+	"rules-table-action-add-category": "Aggiungi alla categoria",
+	"rules-notification-added-rule": "Regola aggiunta",
+	"rules-notification-updated-rule": "Regola aggiornata",
+	"rules-notification-deleted-rule": "Regola cancellata"
+}

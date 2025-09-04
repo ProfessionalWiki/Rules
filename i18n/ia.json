@@ -1,0 +1,33 @@
+{
+	"@metadata": {
+		"authors": [
+			"McDutchie"
+		]
+	},
+	"rules-description": "Automatisar le categorisation de paginas MediaWiki a base de regulas definite sur [[MediaWiki:Rules]]",
+	"rules-noscript-message": "Per favor activa JavaScript pro vider le interfacie de regulas.",
+	"rules-table-caption": "Regulas",
+	"rules-table-column-name": "Nomine",
+	"rules-table-column-conditions": "Conditiones",
+	"rules-table-column-actions": "Actiones",
+	"rules-table-empty-state": "Il non ha ancora regulas.",
+	"rules-table-add-rule": "Adder regula",
+	"rules-table-delete-rule": "Deler regula",
+	"rules-table-edit-rule": "Modificar regula",
+	"rules-table-more-actions": "Plus actiones",
+	"rules-edit-rule-save": "Salveguardar",
+	"rules-edit-rule-name-label": "Nomine del regula",
+	"rules-edit-rule-condition-label": "Si un pagina…",
+	"rules-edit-rule-condition-in-category": "es in al minus un de iste categorias",
+	"rules-edit-rule-condition-add": "Adder condition",
+	"rules-edit-rule-action-label": "Alora…",
+	"rules-edit-rule-action-add-category": "adder al categoria",
+	"rules-multi-text-input-remove-item": "Remover elemento",
+	"rules-operator-and": "E",
+	"rules-table-condition-in-category": "In categoria",
+	"rules-table-action-add-category": "Adder al categoria",
+	"rules-notification-added-rule": "Regula addite",
+	"rules-notification-updated-rule": "Regula actualisate",
+	"rules-notification-deleted-rule": "Regula delite",
+	"rules-config-invalid": "Tu modificationes non ha essite salveguardate. Illos contine le sequente error{{PLURAL:$1||es}}:"
+}

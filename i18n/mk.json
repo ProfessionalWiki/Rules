@@ -1,0 +1,33 @@
+{
+	"@metadata": {
+		"authors": [
+			"Bjankuloski06"
+		]
+	},
+	"rules-description": "Автоматизирање на категоризацијата на страници на МедијаВики според правилата зададени на [[MediaWiki:Rules]]",
+	"rules-noscript-message": "Овозможете го JavaScript за да го гледате посредникот за Правила.",
+	"rules-table-caption": "Правила",
+	"rules-table-column-name": "Име",
+	"rules-table-column-conditions": "Услови",
+	"rules-table-column-actions": "Дејства",
+	"rules-table-empty-state": "Засега нема ниедно правило.",
+	"rules-table-add-rule": "Додај правило",
+	"rules-table-delete-rule": "Избриши правило",
+	"rules-table-edit-rule": "Уреди правило",
+	"rules-table-more-actions": "Повеќе дејства",
+	"rules-edit-rule-save": "Зачувај",
+	"rules-edit-rule-name-label": "Име на правилото",
+	"rules-edit-rule-condition-label": "Ако една страница...",
+	"rules-edit-rule-condition-in-category": "е барем во една од овие категории",
+	"rules-edit-rule-condition-add": "Додај услов",
+	"rules-edit-rule-action-label": "Тогаш...",
+	"rules-edit-rule-action-add-category": "додај во категорија",
+	"rules-multi-text-input-remove-item": "Отстрани ставка",
+	"rules-operator-and": "И",
+	"rules-table-condition-in-category": "Во категоријата",
+	"rules-table-action-add-category": "Додај во категорија",
+	"rules-notification-added-rule": "Додадено правило",
+	"rules-notification-updated-rule": "Подновено правило",
+	"rules-notification-deleted-rule": "Избришано правило",
+	"rules-config-invalid": "Вашите промени не се зачувани. {{PLURAL:$1|Ја содржат следнава грешка|Ги содржат следниве грешки}}:"
+}

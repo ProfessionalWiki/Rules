@@ -1,0 +1,30 @@
+{
+	"@metadata": {
+		"authors": [
+			"Bisang"
+		]
+	},
+	"rules-noscript-message": "규칙 인터페이스를 보려면 JavaScript를 활성화해 주세요.",
+	"rules-table-caption": "규칙",
+	"rules-table-column-name": "이름",
+	"rules-table-column-conditions": "조건",
+	"rules-table-column-actions": "동작",
+	"rules-table-empty-state": "아직 규칙이 없습니다.",
+	"rules-table-add-rule": "규칙 추가",
+	"rules-table-delete-rule": "규칙 지우기",
+	"rules-table-edit-rule": "규칙 편집",
+	"rules-table-more-actions": "옵션 더 보기",
+	"rules-edit-rule-save": "저장",
+	"rules-edit-rule-name-label": "규칙 이름",
+	"rules-edit-rule-condition-label": "만약 페이지가...",
+	"rules-edit-rule-condition-in-category": "다음 카테고리 중 하나 이상에 속함",
+	"rules-edit-rule-condition-add": "조건 추가",
+	"rules-edit-rule-action-label": "그 다음에...",
+	"rules-edit-rule-action-add-category": "분류에 추가",
+	"rules-multi-text-input-remove-item": "항목 제거",
+	"rules-operator-and": "그리고",
+	"rules-table-action-add-category": "분류 추가",
+	"rules-notification-added-rule": "규칙 추가됨",
+	"rules-notification-updated-rule": "업데이트된 규칙",
+	"rules-notification-deleted-rule": "규칙 삭제됨"
+}
