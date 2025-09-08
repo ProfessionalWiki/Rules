@@ -5,10 +5,12 @@
 		]
 	},
 	"rules-description": "Автоматизаци йе MediaWiki агӀонийн категоризаци йарца [[MediaWiki:Rules]] тӀехь билгалйаьхначу бакъонашца",
+	"rules-noscript-message": "Дехар до, JavaScript дӀахӀоттайе интерфейс ган.",
 	"rules-table-caption": "Бакъонаш",
 	"rules-table-column-name": "ЦӀе",
 	"rules-table-column-conditions": "Билламаш",
 	"rules-table-column-actions": "Ардамаш",
+	"rules-table-empty-state": "Цкъачунна цхьа а бакъо йац.",
 	"rules-table-add-rule": "ТӀетоха бакъо",
 	"rules-table-delete-rule": "ДӀайаккха бакъо",
 	"rules-table-edit-rule": "Бакъо хийца",
@@ -16,6 +18,7 @@
 	"rules-edit-rule-save": "Ӏалашйан",
 	"rules-edit-rule-name-label": "Бакъонан цӀе",
 	"rules-edit-rule-condition-label": "Нагахь санна цхьа агӀо...",
+	"rules-edit-rule-condition-in-category": "лаххара а цхьана хӀокху категорешкахь йу",
 	"rules-edit-rule-condition-add": "ТӀетоха биллам",
 	"rules-edit-rule-action-label": "ТӀаккха...",
 	"rules-edit-rule-action-add-category": "категори чу тӀетоха",
@@ -25,5 +28,6 @@
 	"rules-table-action-add-category": "Категори чу тӀетоха",
 	"rules-notification-added-rule": "ТӀетоьхна бакъо",
 	"rules-notification-updated-rule": "Карлайаьккхина бакъо",
-	"rules-notification-deleted-rule": "ДӀайаьккхина бакъо"
+	"rules-notification-deleted-rule": "ДӀайаьккхина бакъо",
+	"rules-config-invalid": "Хьан хийцамаш Ӏалашбина бацара. Царна йукъахь ду хӀара {{PLURAL:$1|гӀалат|гӀалаташ}}:"
 }
