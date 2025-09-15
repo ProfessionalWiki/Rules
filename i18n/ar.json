@@ -1,0 +1,16 @@
+{
+	"@metadata": {
+		"authors": [
+			"Mohammed Qays"
+		]
+	},
+	"rules-table-caption": "القواعد",
+	"rules-table-column-name": "الاسم",
+	"rules-table-column-actions": "الإجراءات",
+	"rules-table-empty-state": "لا توجد قواعد حتى الآن.",
+	"rules-edit-rule-save": "حفظ",
+	"rules-edit-rule-action-label": "ثم...",
+	"rules-multi-text-input-remove-item": "إزالة العنصر",
+	"rules-notification-added-rule": "قاعدة إضافية",
+	"rules-notification-updated-rule": "القاعدة المحدثة"
+}
