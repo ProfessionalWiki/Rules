@@ -1,16 +1,34 @@
 {
 	"@metadata": {
 		"authors": [
+			"Meno25",
 			"Mohammed Qays"
 		]
 	},
+	"rules-description": "أتمتة تصنيف صفحات ميدياويكي بناءً على القواعد المحددة في [[MediaWiki:Rules]]",
+	"rules-noscript-message": "يرجى تمكين JavaScript لرؤية واجهة القواعد.",
 	"rules-table-caption": "القواعد",
 	"rules-table-column-name": "الاسم",
+	"rules-table-column-conditions": "الشروط",
 	"rules-table-column-actions": "الإجراءات",
 	"rules-table-empty-state": "لا توجد قواعد حتى الآن.",
+	"rules-table-add-rule": "إضافة قاعدة",
+	"rules-table-delete-rule": "إزالة القاعدة",
+	"rules-table-edit-rule": "تعديل القاعدة",
+	"rules-table-more-actions": "المزيد من الإجراءات",
 	"rules-edit-rule-save": "حفظ",
+	"rules-edit-rule-name-label": "اسم القاعدة",
+	"rules-edit-rule-condition-label": "إذا كانت الصفحة...",
+	"rules-edit-rule-condition-in-category": "يندرج في واحدة من هذه التصنيفات على الأقل",
+	"rules-edit-rule-condition-add": "إضافة شرط",
 	"rules-edit-rule-action-label": "ثم...",
+	"rules-edit-rule-action-add-category": "أضف إلى التصنيف",
 	"rules-multi-text-input-remove-item": "إزالة العنصر",
+	"rules-operator-and": "و",
+	"rules-table-condition-in-category": "في التصنيف",
+	"rules-table-action-add-category": "أضف إلى التصنيف",
 	"rules-notification-added-rule": "قاعدة إضافية",
-	"rules-notification-updated-rule": "القاعدة المحدثة"
+	"rules-notification-updated-rule": "القاعدة المحدثة",
+	"rules-notification-deleted-rule": "قاعدة محذوفة",
+	"rules-config-invalid": "لم يتم حفظ تغييراتك. تحتوي {{PLURAL:$1|الأخطاء}} التالية:"
 }

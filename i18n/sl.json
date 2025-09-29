@@ -1,0 +1,33 @@
+{
+	"@metadata": {
+		"authors": [
+			"Eleassar"
+		]
+	},
+	"rules-description": "Avtomatizacija strani MediaWiki na podlagi pravil, določenih v [[MediaWiki:Rules]]",
+	"rules-noscript-message": "Za ogled vmesnika Pravil omogočite JavaScript.",
+	"rules-table-caption": "Pravila",
+	"rules-table-column-name": "Ime",
+	"rules-table-column-conditions": "Pogoji",
+	"rules-table-column-actions": "Dejanja",
+	"rules-table-empty-state": "Pravil še ni.",
+	"rules-table-add-rule": "Dodaj pravilo",
+	"rules-table-delete-rule": "Izbriši pravilo",
+	"rules-table-edit-rule": "Uredi pravilo",
+	"rules-table-more-actions": "Več dejanj",
+	"rules-edit-rule-save": "Shrani",
+	"rules-edit-rule-name-label": "Ime pravila",
+	"rules-edit-rule-condition-label": "Če stran ...",
+	"rules-edit-rule-condition-in-category": "spada v vsaj eno od teh kategorij",
+	"rules-edit-rule-condition-add": "Dodaj pogoj",
+	"rules-edit-rule-action-label": "Potem ...",
+	"rules-edit-rule-action-add-category": "dodaj v kategorijo",
+	"rules-multi-text-input-remove-item": "Odstrani element",
+	"rules-operator-and": "IN",
+	"rules-table-condition-in-category": "V kategoriji",
+	"rules-table-action-add-category": "Dodaj v kategorijo",
+	"rules-notification-added-rule": "Dodano pravilo",
+	"rules-notification-updated-rule": "Posodobljeno pravilo",
+	"rules-notification-deleted-rule": "Izbrisano pravilo",
+	"rules-config-invalid": "Vaše spremembe niso bile shranjene. Vsebujejo {{PLURAL:$1|naslednjo napako|naslednje napake}}:"
+}
