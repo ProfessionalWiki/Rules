@@ -1,0 +1,33 @@
+{
+	"@metadata": {
+		"authors": [
+			"Toliño"
+		]
+	},
+	"rules-description": "Automatiza a categorización das páxinas de MediaWiki en función das regras definidas en «[[MediaWiki:Rules]]»",
+	"rules-noscript-message": "Activa o JavaScript para ver a interface das regras.",
+	"rules-table-caption": "Regras",
+	"rules-table-column-name": "Nome",
+	"rules-table-column-conditions": "Condicións",
+	"rules-table-column-actions": "Accións",
+	"rules-table-empty-state": "Aínda non hai regras.",
+	"rules-table-add-rule": "Engadir a regra",
+	"rules-table-delete-rule": "Eliminar a regra",
+	"rules-table-edit-rule": "Editar a regra",
+	"rules-table-more-actions": "Máis accións",
+	"rules-edit-rule-save": "Gardar",
+	"rules-edit-rule-name-label": "Nome da regra",
+	"rules-edit-rule-condition-label": "Se unha páxina...",
+	"rules-edit-rule-condition-in-category": "está en polo menos unha destas categorías",
+	"rules-edit-rule-condition-add": "Engadir a condición",
+	"rules-edit-rule-action-label": "Entón...",
+	"rules-edit-rule-action-add-category": "engadir á categoría",
+	"rules-multi-text-input-remove-item": "Eliminar o elemento",
+	"rules-operator-and": "E",
+	"rules-table-condition-in-category": "Na categoría",
+	"rules-table-action-add-category": "Engadir á categoría",
+	"rules-notification-added-rule": "Engadiuse a regra",
+	"rules-notification-updated-rule": "Actualizouse a regra",
+	"rules-notification-deleted-rule": "Eliminouse a regra",
+	"rules-config-invalid": "Non se gardaron os cambios. Conteñen {{PLURAL:$1|o seguinte erro|os seguintes erros}}:"
+}
