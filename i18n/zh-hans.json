@@ -1,0 +1,34 @@
+{
+	"@metadata": {
+		"authors": [
+			"Libamidi",
+			"Peterxy12"
+		]
+	},
+	"rules-description": "根据定义在[[MediaWiki:Rules]]的规则来自动分类MediaWiki页面",
+	"rules-noscript-message": "请启用JavaScript以查看Rules界面。",
+	"rules-table-caption": "规则",
+	"rules-table-column-name": "名称",
+	"rules-table-column-conditions": "条件",
+	"rules-table-column-actions": "操作",
+	"rules-table-empty-state": "目前尚未有规则。",
+	"rules-table-add-rule": "添加规则",
+	"rules-table-delete-rule": "删除规则",
+	"rules-table-edit-rule": "编辑规则",
+	"rules-table-more-actions": "更多操作",
+	"rules-edit-rule-save": "保存",
+	"rules-edit-rule-name-label": "规则名称",
+	"rules-edit-rule-condition-label": "如果有页面…",
+	"rules-edit-rule-condition-in-category": "至少属于这些分类之一",
+	"rules-edit-rule-condition-add": "添加条件",
+	"rules-edit-rule-action-label": "然后⋯⋯",
+	"rules-edit-rule-action-add-category": "添加分类",
+	"rules-multi-text-input-remove-item": "移除项目",
+	"rules-operator-and": "而且",
+	"rules-table-condition-in-category": "在分类",
+	"rules-table-action-add-category": "添加到分类",
+	"rules-notification-added-rule": "已添加规则",
+	"rules-notification-updated-rule": "已更新股则",
+	"rules-notification-deleted-rule": "已删除规则",
+	"rules-config-invalid": "您的更改未保存。更改包含以下{{PLURAL:$1|错误}}："
+}
