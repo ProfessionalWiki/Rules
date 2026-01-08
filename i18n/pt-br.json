@@ -1,0 +1,18 @@
+{
+	"@metadata": {
+		"authors": [
+			"Eduardoaddad"
+		]
+	},
+	"rules-table-caption": "Regras",
+	"rules-table-column-name": "Nome",
+	"rules-table-column-conditions": "Condições",
+	"rules-table-column-actions": "Ações",
+	"rules-table-add-rule": "Adicionar regra",
+	"rules-table-delete-rule": "Excluir regra",
+	"rules-table-edit-rule": "Editar regra",
+	"rules-table-more-actions": "Mais ações",
+	"rules-edit-rule-save": "Salvar",
+	"rules-edit-rule-name-label": "Nome da regra:",
+	"rules-edit-rule-condition-add": "Adicionar condição"
+}
