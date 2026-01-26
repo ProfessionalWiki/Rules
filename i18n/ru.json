@@ -1,0 +1,28 @@
+{
+	"@metadata": {
+		"authors": [
+			"Yurina Tatiana"
+		]
+	},
+	"rules-table-caption": "Правила",
+	"rules-table-column-name": "Название",
+	"rules-table-column-conditions": "Условия",
+	"rules-table-column-actions": "Действия",
+	"rules-table-empty-state": "Правил пока нет.",
+	"rules-table-add-rule": "Добавить правило",
+	"rules-table-delete-rule": "Удалить правило",
+	"rules-table-edit-rule": "Изменить правило",
+	"rules-table-more-actions": "Другие действия",
+	"rules-edit-rule-save": "Сохранить",
+	"rules-edit-rule-name-label": "Название правила",
+	"rules-edit-rule-condition-label": "Если страница...",
+	"rules-edit-rule-condition-in-category": "находится как минимум в одной из этих категорий",
+	"rules-edit-rule-condition-add": "Добавить условие",
+	"rules-edit-rule-action-label": "Затем...",
+	"rules-edit-rule-action-add-category": "добавить в категорию",
+	"rules-multi-text-input-remove-item": "Удалить элемент",
+	"rules-operator-and": "И",
+	"rules-table-condition-in-category": "В категории",
+	"rules-table-action-add-category": "Добавить в категорию",
+	"rules-notification-added-rule": "Добавлено правило"
+}
