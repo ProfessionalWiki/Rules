@@ -1,0 +1,31 @@
+{
+	"@metadata": {
+		"authors": [
+			"Amire80",
+			"Neriah"
+		]
+	},
+	"rules-table-caption": "כללים",
+	"rules-table-column-name": "שם",
+	"rules-table-column-conditions": "תנאים",
+	"rules-table-column-actions": "פעולות",
+	"rules-table-empty-state": "אין עדיין כללים.",
+	"rules-table-add-rule": "הוספת כלל",
+	"rules-table-delete-rule": "מחיקת כלל",
+	"rules-table-edit-rule": "עריכת כלל",
+	"rules-table-more-actions": "פעולות נוספות",
+	"rules-edit-rule-save": "שמירה",
+	"rules-edit-rule-name-label": "שם הכלל",
+	"rules-edit-rule-condition-label": "אם הדף...",
+	"rules-edit-rule-condition-in-category": "נמצא לפחות באחת מהקטגוריות האלו",
+	"rules-edit-rule-condition-add": "הוספת תנאי",
+	"rules-edit-rule-action-label": "אז...",
+	"rules-edit-rule-action-add-category": "להוסיף לקטגוריה",
+	"rules-multi-text-input-remove-item": "הסרת פריט",
+	"rules-operator-and": "וגם",
+	"rules-table-action-add-category": "הוספת קטגוריה",
+	"rules-notification-added-rule": "נוסף כלל",
+	"rules-notification-updated-rule": "עודכן כלל",
+	"rules-notification-deleted-rule": "נמחק כלל",
+	"rules-config-invalid": "השינויים שלך לא נשמרו. הם מכילים את {{PLURAL:$1|השגיאה הבאה|השגיאות הבאות}}:"
+}
