@@ -2,9 +2,12 @@
 	"@metadata": {
 		"authors": [
 			"Amire80",
-			"Neriah"
+			"Neriah",
+			"YaronSh"
 		]
 	},
+	"rules-description": "סיווג דפי מדיה־ויקי אוטומטית לפי כללים שהוגדרו ב־[[MediaWiki\n:\nRules]]",
+	"rules-noscript-message": "נא להפעיל JavaScript כדי לצפות בממשק הכללים.",
 	"rules-table-caption": "כללים",
 	"rules-table-column-name": "שם",
 	"rules-table-column-conditions": "תנאים",
