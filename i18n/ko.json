@@ -1,9 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"Bisang"
+			"Bisang",
+			"Tensama0415"
 		]
 	},
+	"rules-description": "[[MediaWiki:Rules]]에 정의된 규칙을 기반으로 미디어위키 문서 분류를 자동화합니다.",
 	"rules-noscript-message": "규칙 인터페이스를 보려면 JavaScript를 활성화해 주세요.",
 	"rules-table-caption": "규칙",
 	"rules-table-column-name": "이름",
@@ -23,8 +25,10 @@
 	"rules-edit-rule-action-add-category": "분류에 추가",
 	"rules-multi-text-input-remove-item": "항목 제거",
 	"rules-operator-and": "그리고",
+	"rules-table-condition-in-category": "분류 중",
 	"rules-table-action-add-category": "분류 추가",
 	"rules-notification-added-rule": "규칙 추가됨",
 	"rules-notification-updated-rule": "업데이트된 규칙",
-	"rules-notification-deleted-rule": "규칙 삭제됨"
+	"rules-notification-deleted-rule": "규칙 삭제됨",
+	"rules-config-invalid": "변경 내용이 저장되지 않았습니다. 다음 {{PLURAL:$1|오류}}가 포함되어 있습니다:"
 }
