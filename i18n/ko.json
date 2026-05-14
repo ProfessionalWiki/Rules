@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Bisang",
-			"Tensama0415"
+			"Tensama0415",
+			"解浪"
 		]
 	},
 	"rules-description": "[[MediaWiki:Rules]]에 정의된 규칙을 기반으로 미디어위키 문서 분류를 자동화합니다.",
