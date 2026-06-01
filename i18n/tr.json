@@ -1,0 +1,33 @@
+{
+	"@metadata": {
+		"authors": [
+			"HakanIST"
+		]
+	},
+	"rules-description": "[[MediaWiki:Rules]] adresinde tanımlanan kurallara dayalı olarak MediaWiki sayfa kategorizasyonunu otomatikleştir",
+	"rules-noscript-message": "Kurallar arayüzünü görmek için lütfen JavaScript'i etkinleştirin.",
+	"rules-table-caption": "Kurallar",
+	"rules-table-column-name": "Ad",
+	"rules-table-column-conditions": "Koşullar",
+	"rules-table-column-actions": "Eylemler",
+	"rules-table-empty-state": "Henüz kural yok.",
+	"rules-table-add-rule": "Kural ekle",
+	"rules-table-delete-rule": "Kuralı sil",
+	"rules-table-edit-rule": "Kuralı düzenle",
+	"rules-table-more-actions": "Diğer eylemler",
+	"rules-edit-rule-save": "Kaydet",
+	"rules-edit-rule-name-label": "Kural adı",
+	"rules-edit-rule-condition-label": "Bir sayfa...",
+	"rules-edit-rule-condition-in-category": "bu kategorilerden en az birindeyse",
+	"rules-edit-rule-condition-add": "Koşul ekle",
+	"rules-edit-rule-action-label": "O zaman...",
+	"rules-edit-rule-action-add-category": "kategoriye ekle",
+	"rules-multi-text-input-remove-item": "Öğeyi kaldır",
+	"rules-operator-and": "VE",
+	"rules-table-condition-in-category": "Kategoride",
+	"rules-table-action-add-category": "Kategoriye ekle",
+	"rules-notification-added-rule": "Kural eklendi",
+	"rules-notification-updated-rule": "Kural güncellendi",
+	"rules-notification-deleted-rule": "Kural silindi",
+	"rules-config-invalid": "Değişiklikleriniz kaydedilmedi. Aşağıdaki {{PLURAL:$1|hatayı|hataları}} içeriyor:"
+}
