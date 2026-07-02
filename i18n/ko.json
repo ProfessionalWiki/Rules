@@ -14,7 +14,7 @@
 	"rules-table-column-actions": "작업",
 	"rules-table-empty-state": "아직 규칙이 없습니다.",
 	"rules-table-add-rule": "규칙 추가",
-	"rules-table-delete-rule": "규칙 지우기",
+	"rules-table-delete-rule": "규칙 삭제",
 	"rules-table-edit-rule": "규칙 편집",
 	"rules-table-more-actions": "작업 더 보기",
 	"rules-edit-rule-save": "저장",
