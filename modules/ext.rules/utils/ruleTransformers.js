@@ -91,5 +91,5 @@ function formatActionForTableRow( action ) {
 
 module.exports = {
 	formStateToRule,
-	ruleToTableRow,
+	ruleToTableRow
 };

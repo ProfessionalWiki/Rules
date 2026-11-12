@@ -227,8 +227,8 @@ jobs:
       #- name: Lint styles
       #  run: npm run lint:styles
 
-      #- name: Lint JS
-      #  run: npm run lint:js
+      - name: Lint JS
+        run: npm run lint:js
 
   npm-test:
     name: "NPM: Test"
