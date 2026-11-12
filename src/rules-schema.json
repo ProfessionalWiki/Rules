@@ -17,7 +17,7 @@
 							"properties": {
 								"type": {
 									"type": "string",
-									"enum": ["inCategory"]
+									"enum": [ "inCategory" ]
 								},
 								"categories": {
 									"type": "array",
@@ -27,7 +27,7 @@
 									"minItems": 1
 								}
 							},
-							"required": ["type", "categories"],
+							"required": [ "type", "categories" ],
 							"additionalProperties": false
 						}
 					},
@@ -38,22 +38,22 @@
 							"properties": {
 								"type": {
 									"type": "string",
-									"enum": ["addCategory"]
+									"enum": [ "addCategory" ]
 								},
 								"category": {
 									"type": "string"
 								}
 							},
-							"required": ["type"],
+							"required": [ "type" ],
 							"additionalProperties": false
 						}
 					}
 				},
-				"required": ["name"],
+				"required": [ "name" ],
 				"additionalProperties": false
 			}
 		}
 	},
-	"required": ["rules"],
+	"required": [ "rules" ],
 	"additionalProperties": false
 }
