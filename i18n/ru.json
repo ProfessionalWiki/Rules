@@ -24,5 +24,6 @@
 	"rules-operator-and": "И",
 	"rules-table-condition-in-category": "В категории",
 	"rules-table-action-add-category": "Добавить в категорию",
-	"rules-notification-added-rule": "Добавлено правило"
+	"rules-notification-added-rule": "Добавлено правило",
+	"rules-config-invalid": "Ваши изменения не были сохранены. Они содержат {{PLURAL:$1|следующую ошибку|следующие ошибки}}:"
 }
